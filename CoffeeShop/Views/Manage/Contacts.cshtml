@@ -1,0 +1,247 @@
+﻿
+@{
+    ViewBag.Title = "Liên hệ & góp ý";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!-- Timeline Widget -->
+<div class="widget">
+    <div class="widget-extra themed-background-dark">
+        <h3 class="widget-content-light">
+            <strong>@ViewBag.Title</strong>
+        </h3>
+        <div class="widget-options" style="opacity: 1; padding-top: 3px;">
+            <div class="text-left text-nowrap" style="display: inline-block;">
+                <select class="form-control form-control-lg" size="1">
+                    <option value="all">Tất cả</option>
+                    <option value="online">Chưa xem</option>
+                    <option value="offline">Đã xem</option>
+                    <option value="offline">Đã trả lời</option>
+                </select>
+            </div>     
+        </div>
+    </div>
+    <div class="widget-extra" style="height: auto !important;">
+        <div>
+            <ul class="breadcrumb">
+                <li>Reishi Coffee & Milk tea</li>
+                <li><a href="/manage/contacts">@ViewBag.Title</a></li>
+            </ul>
+        </div>
+        <div style="padding: 0 0;">
+            <table class="table table-borderless middle-verticle" style="margin-bottom: 0; margin-top: 0;">
+                <tr>
+                    <th class="text-left text-nowrap" style="padding-left: 0;">
+                        <label>Tìm kiếm</label>
+                        <input type="text" class="form-control form-control-lg" placeholder="Nhập từ khoá tìm kiếm.."/>
+                        <span class="help-block hidden-xs hidden-sm">Nhập thông tin tìm kiếm để tìm nhanh người dùng</span>
+                    </th>  
+                    <th class="text-left text-nowrap" style="width: 30px;">
+                        <label>Ngày nhận</label>
+                        <input type="date" class="form-control form-control-lg"/>
+                        <span class="help-block hidden-xs hidden-sm">Ngày nhận thư</span>
+                    </th>                         
+                    <th class="text-nowrap" style="width: 1%; padding-right: 0;">
+                        <div><label>&nbsp;</label></div>
+                        <a href="javascript:void(0);" data-toggle="modal" data-target="#modal_add_user" data-backdrop="static" data-keyboard="false" class="btn btn-warning btn-lg">
+                            <i class="fa fa-search"></i> <span class="hidden-xs hidden-sm">Tìm kiếm</span>
+                        </a>     
+                        <a href="javascript:void(0);" data-toggle="modal" data-target="#modal_add_user" data-backdrop="static" data-keyboard="false" class="btn btn-success btn-lg">
+                            <i class="fa fa-pencil"></i> <span class="hidden-xs hidden-sm">Soạn thư</span>
+                        </a>     
+                        <div><span class="help-block hidden-xs hidden-sm">&nbsp;</span></div>
+
+                        <!-- Modal -->
+                        <div class="modal fade text-left" id="modal_add_user" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">
+                                            <i class="fa fa-plus"></i> Thêm mới quản trị viên
+                                        </h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="text-center" style="margin-bottom: 15px;">
+                                            
+                                            <div class="row">
+                                                <div class="col-xs-4">
+                                                    <label class="visible-on-hover-wrap circle-border-radius" style="cursor: pointer;">
+                                                        <img src="/img/luffy-avt.jpg" alt="avatar" class="img-circle" style="width: 100px;">
+                                                        <input type="file" style="display: none;" />
+                                                        <span class="visible-on-hover circle-border-radius" style=" color: #fff; background-color: rgba(0, 0, 0, 0.59); width: 100%; height: 100%; top: 0; left: 0; padding-top: 33px;">
+                                                            <i class="fa fa fa-3x fa-plus"></i>
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <div class="form-group">
+                                                        <label>Kích hoạt<span class="text-danger">*</span></label>
+                                                        <div>
+                                                            <label class="switch switch-success">
+                                                                <input type="checkbox" checked=""><span></span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <div class="form-group">
+                                                        <label>Cấp quyền admin<span class="text-danger">*</span></label>
+                                                        <div>
+                                                            <label class="switch switch-success">
+                                                                <input type="checkbox" checked=""><span></span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                <div class="form-group">
+                                                    <label>Họ và Tên<span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control form-control-lg" placeholder="Nhập họ & tên người dùng.."/>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <div class="form-group">
+                                                    <label>Tên đăng nhập<span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control form-control-lg" placeholder="Nhập tên đăng nhập.."/>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <div class="form-group">
+                                                    <label>Mật khẩu<span class="text-danger">*</span></label>
+                                                    <input type="password" class="form-control form-control-lg" placeholder="Nhập mật khẩu.."/>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <div class="form-group">
+                                                    <label>Nhập lại mật khẩu<span class="text-danger">*</span></label>
+                                                    <input type="password" class="form-control form-control-lg" placeholder="Nhập lại mật khẩu.."/>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Email<span class="text-danger">*</span></label>
+                                                    <input type="email" class="form-control form-control-lg" placeholder="Nhập email.."/>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Số điện thoại<span class="text-danger">*</span></label>
+                                                    <input type="tel" class="form-control form-control-lg" placeholder="Nhập số điện thoại.."/>
+                                                </div>
+                                            </div>
+                                        </div>     
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Huỷ bỏ</button>
+                                        <button type="button" class="btn btn-success btn-lg">
+                                            <i class="fa fa-check"></i> Đồng ý
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Modal -->
+                    </th>
+                </tr>
+            </table>
+            <div class="table-responsive">
+                <table class="table table-hover table-vcenter">
+                    <tbody>
+                        @for (int i = 0; i < 10; i++)
+                        {
+                        <!-- Use the first row as a prototype for your column widths -->
+                        <tr>                    
+                            <td style="width: 1%; white-space: normal !important;">
+                                <a href="javascript:void(0);" data-toggle="modal" data-target="#modal_viewcontact_@i" data-backdrop="static" data-keyboard="false" class="btn btn-warning">Xem</a>
+                                <!-- Modal -->
+                                <div class="modal fade" id="modal_viewcontact_@i" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                    <div class="modal-dialog modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title text-nowrap" style="overflow: hidden;" id="myModalLabel">
+                                                    <i class="fa fa-envelope-open-o"></i> 'Hot boy trà sữa': 'Thầy khen tôi hát hay hơn vài ca sĩ hiện nay' @i
+                                                </h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <table class="table table-borderless table-vcenter remove-margin">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="text-center" style="width: 80px;">
+                                                                <a href="page_ready_user_profile.html" class="pull-left">
+                                                                    <img src="/img/luffy-avt.jpg" style="width: 80px;" alt="Avatar" class="img-circle">
+                                                                </a>
+                                                            </td>
+                                                            <td>
+                                                                <h4 style="margin-top: 0;"><strong>HOÀNG HÀ DUY @i</strong></h4>
+                                                                <div><strong>Email: hoanghaduy.qt@gmail.com @i</strong></div>
+                                                                <div><strong>Điện thoại: 0985 930 542 @i</strong></div>
+                                                                <div><strong>Ngày nhận: 22-12-2017 10:30 @i</strong></div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                <hr />
+                                                <div>
+                                                    <h3 style="margin-top: 0;">
+                                                        <strong>
+                                                            'Hot boy trà sữa': 'Thầy khen tôi hát hay hơn vài ca sĩ hiện nay' @i
+                                                        </strong>
+                                                    </h3>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultrices, justo vel imperdiet gravida, urna ligula hendrerit nibh, ac cursus nibh sapien in purus. Mauris tincidunt tincidunt turpis in porta. Integer fermentum tincidunt auctor. Vestibulum ullamcorper, odio sed rhoncus imperdiet, enim elit sollicitudin orci, eget dictum leo mi nec lectus. Nam commodo turpis id lectus scelerisque vulputate. Integer sed dolor erat. Fusce erat ipsum, varius vel euismod sed, tristique et lectus? Etiam egestas fringilla enim, id convallis lectus laoreet at. Fusce purus nisi, gravida sed consectetur ut, interdum quis nisi. Quisque egestas nisl id lectus facilisis scelerisque? Proin rhoncus dui at ligula vestibulum ut facilisis ante sodales! Suspendisse potenti. Aliquam tincidunt sollicitudin sem nec ultrices. Sed at mi velit. Ut egestas tempor est, in cursus enim venenatis eget! Nulla quis ligula ipsum. Donec vitae ultrices dolor?</p>
+                                                    <p>Donec lacinia venenatis metus at bibendum? In hac habitasse platea dictumst. Proin ac nibh rutrum lectus rhoncus eleifend. Sed porttitor pretium venenatis. Suspendisse potenti. Aliquam quis ligula elit. Aliquam at orci ac neque semper dictum. Sed tincidunt scelerisque ligula, et facilisis nulla hendrerit non. Suspendisse potenti. Pellentesque non accumsan orci. Praesent at lacinia dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                                </div>
+                                                
+                                                <hr />
+                                                <div class="form-group">
+                                                    <label>Trả lời nhanh<span class="text-danger">*</span></label>
+                                                    <textarea class="form-control form-control-lg" rows="6" style="resize: vertical;" placeholder="Nhập nội dung trả lời @i.."></textarea>
+                                                </div>
+                                                <div class="form-group">   
+                                                    <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Huỷ bỏ</button>                                                 
+                                                    <button type="button" class="btn btn-success btn-lg">
+                                                        <i class="fa fa-reply"></i> Gửi thư
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Modal -->
+                            </td>
+                            <td class="text-right text-nowrap" style="width: 1%;">&nbsp;&nbsp;&nbsp;<span class="label label-warning"><em>Vừa xong</em></span>&nbsp;&nbsp;&nbsp;</td> 
+                            <td class="text-center" style="width: 30px;">
+                                <a href="javascript:void(0)" class="text-success msg-read-btn"><i class="fa fa-circle"></i></a>
+                            </td>
+                            <td class="text-nowrap" style="width: 1%;">Debra Stanley</td>
+                            <td class="text-left text-nowrap" style="overflow: hidden;">
+                                <a href="javascript:void(0);" data-toggle="modal" data-target="#modal_viewcontact_@i" data-backdrop="static" data-keyboard="false">
+                                    <strong>'Hot boy trà sữa': 'Thầy khen tôi hát hay hơn vài ca sĩ hiện nay'</strong>
+                                </a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            
+            <div class="text-center">
+                <ul class="pagination pagination-lg">
+                    <li><a href="javascript:void(0)"><i class="fa fa-arrow-left"></i></a></li>
+                    <li><a href="javascript:void(0)">1</a></li>
+                    <li class="active"><a href="javascript:void(0)">2</a></li>
+                    <li><a href="javascript:void(0)">3</a></li>
+                    <li><a href="javascript:void(0)"><i class="fa fa-arrow-right"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Timeline Widget -->

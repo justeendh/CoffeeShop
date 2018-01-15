@@ -1,0 +1,213 @@
+﻿
+@{
+    ViewBag.Title = "Bài viết - Tin tức";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div class="row text-center">
+    <div class="col-sm-6 col-lg-3">
+        <a href="/manage/editarticle" class="widget widget-hover-effect2">
+            <div class="widget-extra themed-background-success">
+                <h4 class="widget-content-light"><strong>Thêm mới</strong> Bài viết</h4>
+            </div>
+            <div class="widget-extra-full"><span class="h2 text-success animation-expandOpen"><i class="fa fa-plus"></i></span></div>
+        </a>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <a href="javascript:void(0)" class="widget widget-hover-effect2">
+            <div class="widget-extra themed-background-danger">
+                <h4 class="widget-content-light">Bài viết <strong>Của bạn</strong></h4>
+            </div>
+            <div class="widget-extra-full"><span class="h2 text-danger animation-expandOpen">71</span></div>
+        </a>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <a href="javascript:void(0)" class="widget widget-hover-effect2">
+            <div class="widget-extra themed-background-dark">
+                <h4 class="widget-content-light">Bài viết <strong>trong tháng</strong></h4>
+            </div>
+            <div class="widget-extra-full"><span class="h2 themed-color-dark animation-expandOpen">20</span></div>
+        </a>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <a href="javascript:void(0)" class="widget widget-hover-effect2">
+            <div class="widget-extra themed-background-dark">
+                <h4 class="widget-content-light">Tổng <strong></strong> bài viết</h4>
+            </div>
+            <div class="widget-extra-full"><span class="h2 themed-color-dark animation-expandOpen">4.982</span></div>
+        </a>
+    </div>
+</div>
+
+<!-- Timeline Widget -->
+<div class="widget">
+    <div class="widget-extra themed-background-dark">
+        <h3 class="widget-content-light">
+            <strong>@ViewBag.Title</strong>
+        </h3>
+    </div>
+    <div class="widget-extra" style="height: auto !important;">
+        <div>
+            <ul class="breadcrumb">
+                <li>Reishi Coffee & Milk tea</li>
+                <li><a href="/manage/articles">@ViewBag.Title</a></li>
+            </ul>
+        </div>
+        <div style="padding: 0 0;">
+            <table class="table table-borderless middle-verticle" style="margin-bottom: 0; margin-top: 0;">
+                <tr>
+                    <th class="text-left text-nowrap" style="padding-left: 0;">
+                        <label>Tìm kiếm</label>
+                        <input type="text" class="form-control form-control-lg" placeholder="Nhập từ khoá tìm kiếm.."/>
+                        <span class="help-block hidden-xs hidden-sm">Nhập thông tin tìm kiếm để tìm nhanh người dùng</span>
+                    </th>     
+                        
+                    <th class="text-nowrap" style="width: 1%; padding-right: 0;">
+                        <div><label>&nbsp;</label></div>
+                        <a href="javascript:void(0);" data-toggle="modal" data-target="#modal_add_user" data-backdrop="static" data-keyboard="false" class="btn btn-warning btn-lg">
+                            <i class="fa fa-search"></i> <span class="hidden-xs hidden-sm">Tìm kiếm</span>
+                        </a>     
+                        <div><span class="help-block hidden-xs hidden-sm">&nbsp;</span></div>
+
+                    </th>
+                </tr>
+            </table>
+            <div class="table-responsive">
+                <table class="table table-borderless table-condensed table-striped table-hover text-center middle-verticle">
+                    <thead class="tbhead-color">
+                        <tr>
+                            <th class="text-center text-nowrap" style="width: 1%;">
+                                Hình ảnh
+                            </th>
+                            <th class="text-left">
+                                Tên bài viết
+                            </th>
+                            <th class="text-center text-nowrap">
+                                Phân loại
+                            </th>
+                            <th class="text-center text-nowrap">
+                                Cho phép
+                            </th>
+                            <th class="text-center text-nowrap">
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <a href="#">
+                                    <img src="https://znews-photo-td.zadn.vn/w660/Uploaded/rdsyy/2017_12_23/25855940_1987815081234675_876645281_o.jpg" style="max-width: 100%; height: 50px;" />
+                                </a>
+                            </td>
+                            <td class="text-left" style="padding: 8px;">
+                                <h4 style="margin-bottom: 0; margin-top: 0;">
+                                    <a href="#" class="text-warning">
+                                        <strong>Lên phương án di dời gần 1 triệu người dân tránh bão Tembin</strong>
+                                    </a>
+                                </h4>
+                                <small><strong>Anna Matthews</strong> đăng ngày <strong><em>22-12-2017</em></strong>, <strong>Anna Matthews</strong> cập nhật ngày <strong><em>22-12-2017</em></strong></small>
+                            </td>
+                            <td class="text-nowrap"><strong>Quản trị nội dung</strong></td>
+                            <td class="text-nowrap"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                            <td class="text-nowrap">
+                                <a href="javascript:void(0);" class="btn btn-info">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                                <a href="javascript:void(0);" class="btn btn-danger">
+                                    <i class="gi gi-bin"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="#">
+                                    <img src="https://znews-photo-td.zadn.vn/w660/Uploaded/rdsyy/2017_12_23/25855940_1987815081234675_876645281_o.jpg" style="max-width: 100%; height: 50px;" />
+                                </a>
+                            </td>
+                            <td class="text-left" style="padding: 8px;">
+                                <h4 style="margin-bottom: 0; margin-top: 0;">
+                                    <a href="#" class="text-warning">
+                                        <strong>Bữa tiệc Giáng sinh ở các quốc gia trên thế giới</strong>
+                                    </a>
+                                </h4>
+                                <small><strong>Anna Matthews</strong> đăng ngày <strong><em>22-12-2017</em></strong>, <strong>Anna Matthews</strong> cập nhật ngày <strong><em>22-12-2017</em></strong></small>
+                            </td>
+                            <td class="text-nowrap"><strong>Quản trị nội dung</strong></td>
+                            <td class="text-nowrap"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                            <td class="text-nowrap">
+                                <a href="javascript:void(0);" class="btn btn-info">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                                <a href="javascript:void(0);" class="btn btn-danger">
+                                    <i class="gi gi-bin"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="#">
+                                    <img src="https://znews-photo-td.zadn.vn/w660/Uploaded/rdsyy/2017_12_23/25855940_1987815081234675_876645281_o.jpg" style="max-width: 100%; height: 50px;" />
+                                </a>
+                            </td>
+                            <td class="text-left" style="padding: 8px;">
+                                <h4 style="margin-bottom: 0; margin-top: 0;">
+                                    <a href="#" class="text-warning">
+                                        <strong>Thời tiết ngày 22/12: Sài Gòn lạnh và mưa, Hà Nội ấm áp hơn</strong>
+                                    </a>
+                                </h4>
+                                <small><strong>Anna Matthews</strong> đăng ngày <strong><em>22-12-2017</em></strong>, <strong>Anna Matthews</strong> cập nhật ngày <strong><em>22-12-2017</em></strong></small>
+                            </td>
+                            <td class="text-nowrap"><strong>Quản trị nội dung</strong></td>
+                            <td class="text-nowrap"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                            <td class="text-nowrap">
+                                <a href="javascript:void(0);" class="btn btn-info">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                                <a href="javascript:void(0);" class="btn btn-danger">
+                                    <i class="gi gi-bin"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="#">
+                                    <img src="https://znews-photo-td.zadn.vn/w660/Uploaded/rdsyy/2017_12_23/25855940_1987815081234675_876645281_o.jpg" style="max-width: 100%; height: 50px;" />
+                                </a>
+                            </td>
+                            <td class="text-left" style="padding: 8px;">
+                                <h4 style="margin-bottom: 0; margin-top: 0;">
+                                    <a href="#" class="text-warning">
+                                        <strong>Thời tiết ngày 23/12: Sài Gòn mưa lạnh, Hà Nội ấm trước khi chuyển rét</strong>
+                                    </a>
+                                </h4>
+                                <small><strong>Anna Matthews</strong> đăng ngày <strong><em>22-12-2017</em></strong>, <strong>Anna Matthews</strong> cập nhật ngày <strong><em>22-12-2017</em></strong></small>
+                            </td>
+                            <td class="text-nowrap"><strong>Quản trị nội dung</strong></td>
+                            <td class="text-nowrap"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                            <td class="text-nowrap">
+                                <a href="javascript:void(0);" class="btn btn-info">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                                <a href="javascript:void(0);" class="btn btn-danger">
+                                    <i class="gi gi-bin"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-center">
+                <ul class="pagination pagination-lg">
+                    <li><a href="javascript:void(0)"><i class="fa fa-arrow-left"></i></a></li>
+                    <li><a href="javascript:void(0)">1</a></li>
+                    <li class="active"><a href="javascript:void(0)">2</a></li>
+                    <li><a href="javascript:void(0)">3</a></li>
+                    <li><a href="javascript:void(0)"><i class="fa fa-arrow-right"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Timeline Widget -->

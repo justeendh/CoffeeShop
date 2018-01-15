@@ -1,0 +1,282 @@
+﻿
+@{
+    ViewBag.Title = "Chỉnh sửa sản phẩm";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-8">
+        <!-- Timeline Widget -->
+        <div class="widget">
+            <div class="widget-extra themed-background-dark">
+                <h3 class="widget-content-light">
+                    <strong><i class="fa fa-pencil"></i> @ViewBag.Title</strong>
+                </h3>
+            </div>
+            <div class="widget-extra" style="height: auto !important;">  
+                <div style="padding: 10px 0;">
+                    <!-- General Data Content -->
+                    <form action="page_ecom_product_edit.html" method="post">
+                        <div class="row">
+                            <div class="col-sm-4 col-md-3">                                
+                                <div class="form-group">
+                                    <label for="product-id">PID</label>
+                                    <div class="spaninput form-control form-control-lg">123</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-8 col-md-9">                                
+                                <div class="form-group">
+                                    <label for="product-name">Tên sản phẩm</label>
+                                    <input type="text" id="product-name" name="product-name" class="form-control form-control-lg" placeholder="Enter product name..">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="product-category">Danh mục sản phẩm</label>
+                                    <!-- Chosen plugin (class is initialized in js/app.js -> uiInit()), for extra usage examples you can check out http://harvesthq.github.io/chosen/ -->
+                                    <select id="product-category" name="product-category" class="select-chosen" data-placeholder="Chọn danh mục..">
+                                        <option></option><!-- Required for data-placeholder attribute to work with Chosen plugin -->
+                                        <option value="1">Tablets</option>
+                                        <option value="2">Laptops</option>
+                                        <option value="3">PCs</option>
+                                        <option value="4">Consoles</option>
+                                        <option value="5">Movies</option>
+                                        <option value="6">Books</option>
+                                        <option value="7">Cables</option>
+                                        <option value="8">Adapters</option>
+                                        <option value="9">Office</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="product-price">Đơn giá</label>
+                                    <div class="input-group">
+                                        <input type="number" id="product-price" name="product-price" class="form-control form-control-lg text-right" placeholder="0">
+                                        <div class="input-group-addon"><i class="fa fa-money"></i> VNĐ</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="product-price">Giảm giá</label>
+                                    <div class="input-group">
+                                        <input type="number" id="product-price" name="product-price" class="form-control form-control-lg text-right" placeholder="0">
+                                        <div class="input-group-addon">%</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="product-price">Tiền giảm</label>
+                                    <div class="input-group">
+                                        <input type="number" id="product-price" name="product-price" class="form-control form-control-lg text-right" placeholder="0">
+                                        <div class="input-group-addon"><i class="fa fa-money"></i> VNĐ</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="product-short-description">Mô tả ngắn sản phẩm</label>
+                            <textarea id="product-short-description" name="product-short-description" class="ckeditor" rows="6" style="resize: vertical"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div><label>Cho phép?</label></div>
+                            <label class="switch switch-success">
+                                <input type="checkbox" id="product-status" name="product-status" checked><span></span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-lg btn-success"><i class="fa fa-floppy-o"></i> Save</button>
+                            <button type="reset" class="btn btn-lg btn-warning"><i class="fa fa-repeat"></i> Reset</button>
+                        </div>
+                        <div class="form-group">
+                            <label for="product-description">Mô tả chi tiết sản phẩm</label>
+                            <textarea id="product-description" name="product-description"></textarea>
+                        </div>
+                    </form>
+                    <!-- END General Data Content -->
+                </div>
+            </div>
+        </div>
+        <!-- END Timeline Widget -->
+    </div>
+    <div class="col-lg-4">
+        <!-- Timeline Widget -->
+        <div class="widget">
+            <div class="widget-extra themed-background-dark">
+                <h3 class="widget-content-light">
+                    <strong><i class="fa fa-code"></i> Meta data</strong>
+                </h3>
+            </div>
+            <div class="widget-extra" style="height: auto !important;">  
+                <div style="padding: 10px 0;">
+                    <p class="text-success"><strong>Nội dung hiển thị trên các công cụ tìm kiếm khi khách hàng tìm kiếm sản phẩm</strong></p>
+                    <div class="form-group">
+                        <label for="product-meta-title">Meta Title</label>
+                        <input type="text" id="product-meta-title" name="product-meta-title" class="form-control form-control-lg" placeholder="Nhập meta title..">
+                    </div>
+                    <div class="form-group">
+                        <label for="product-meta-keywords">Meta Keywords</label>
+                        <input type="text" id="product-meta-keywords" name="product-meta-keywords" class="form-control form-control-lg" placeholder="Nhập keyword1, keyword2, keyword3">
+                    </div>
+                    <div class="form-group">
+                        <label for="product-meta-description">Meta Description</label>
+                        <textarea id="product-meta-description" name="product-meta-description" class="form-control form-control-lg" rows="6" placeholder="Nhập meta description.."></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END Timeline Widget -->
+
+        <!-- Timeline Widget -->
+        <div class="widget">
+            <div class="widget-extra themed-background-dark">
+                <h3 class="widget-content-light">
+                    <strong><i class="fa fa-picture-o"></i> Hình ảnh</strong>
+                </h3>
+            </div>
+            <div class="widget-extra" style="height: auto !important;">   
+                <div style="padding: 10px 0;">
+                    <!-- Product Images Content -->
+                    <div class="block-section">
+                        <!-- Dropzone.js, You can check out https://github.com/enyo/dropzone/wiki for usage examples -->
+                        <form id="uploadimagedropzone" action="/manage/Uploadimage?pid=1213" class="dropzone"></form>
+                                        
+                        <div class="form-group text-right" style="margin-top: 5px; display: none;" id="btnuploadwrap">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <button id="submit-all" class="btn btn-success btn-lg btn-block">
+                                        <i class="fa fa-upload"></i> Tải lên
+                                    </button>
+                                </div>
+                                <div class="col-xs-6">
+                                    <button id="clear-dropzone" class="btn btn-danger btn-lg btn-block">
+                                        <i class="fa fa-times"></i> Huỷ bỏ
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <script language="javascript">
+                            Dropzone.options.uploadimagedropzone = {
+                                dictDefaultMessage: "Kéo file vào đây hoặc click chọn file",
+                                autoProcessQueue: false,
+                                addRemoveLinks: true,
+                                dictRemoveFile: "Huỷ bỏ",
+                                init: function () {
+                                    var submitButton = document.querySelector("#submit-all")
+                                    var clearButton = document.querySelector("#clear-dropzone")
+                                    uploadimagedropzone = this; // closure
+                                                    
+                                    submitButton.addEventListener("click", function () {
+                                        uploadimagedropzone.processQueue(); // Tell Dropzone to process all queued files.
+                                    });
+
+                                    // You might want to show the submit button only when 
+                                    // files are dropped here:
+                                    this.on("addedfile", function (file) {
+                                        $("#btnuploadwrap").show();
+                                    });
+
+                                    this.on("removedfile", function (file) {
+                                        var countFile = uploadimagedropzone.getQueuedFiles().length;
+                                        if (countFile === 0) {
+                                            $("#btnuploadwrap").hide();
+                                        }
+                                    });
+
+                                    this.on("error", function (file) {
+                                        $.bootstrapGrowl('<h4>Lỗi Upload!</h4> <p>Đã có lỗi khi upload file ' + file.name + '</p>', {
+                                            type: 'danger',
+                                            delay: 2500,
+                                            allow_dismiss: true
+                                        });
+                                    });
+
+                                    this.on("success", function (file) {
+                                        uploadimagedropzone.removeFile(file);
+                                        $.bootstrapGrowl('<h4>Thành công!</h4> <p>Tải lên thành công file ' + file.name + '</p>', {
+                                            type: 'success',
+                                            delay: 2500,
+                                            allow_dismiss: true
+                                        });
+                                    });
+
+                                    this.on("complete", function (data) {
+                                        //var res = eval('(' + data.xhr.responseText + ')');
+                                        var res = JSON.parse(data.xhr.responseText);
+                                        console.log(res.Message);
+                                    });
+                                                    
+                                    // Using a closure.
+                                    var _this = this;
+
+                                    // Setup the observer for the button.
+                                    clearButton.addEventListener("click", function () {
+                                        // Using "_this" here, because "this" doesn't point to the dropzone anymore
+                                        _this.removeAllFiles();
+                                        // If you want to cancel uploads as well, you
+                                        // could also call _this.removeAllFiles(true);
+                                    });
+                                }
+                            };
+
+                        </script>
+                    </div>
+
+                    <form>
+                        <table class="table table-bordered table-striped table-vcenter">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">
+                                        Hình ảnh
+                                    </th>
+                                    <th class="text-center text-nowrap"  style="width: 1%;">
+                                        Đại diện
+                                    </th>
+                                    <th class="text-center text-nowrap"  style="width: 1%;">
+                                        Action
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="ImagesprdList">
+                                
+                            </tbody>
+                        </table>
+                    </form>
+                    <!-- END Product Images Content -->
+                </div>
+            </div>
+        </div>
+        <!-- END Timeline Widget -->
+    </div>
+</div>
+
+<script id="ImageItemTmpl" type="text/x-jquery-tmpl">
+	<tr>
+        <td style="width: 20%;">
+            <a href="/img/luffy-avt.jpg" data-toggle="lightbox-image">
+                <img src="/img/luffy-avt.jpg" alt="" class="img-responsive center-block" style="max-width: 100%; height: 50px">
+            </a>
+        </td>
+        <td class="text-center">
+            <label class="switch switch-success">
+                <input type="radio" name="primary"><span></span>
+            </label>
+        </td>
+        <td class="text-center">
+            <a href="javascript:void(0)" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
+        </td>
+    </tr>
+</script>
+
+<script>
+    CKEDITOR.replace('product-description', { height: 300 });
+
+    var movies = [{ a: 1 }, { a: 2 }, { a: 2 }, { a: 2 }, { a: 2 }];
+    $("#ImageItemTmpl").tmpl(movies).appendTo("#ImagesprdList");
+
+</script>

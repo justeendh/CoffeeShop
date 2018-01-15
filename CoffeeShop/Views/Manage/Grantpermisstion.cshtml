@@ -1,0 +1,432 @@
+﻿
+@{
+    ViewBag.Title = "Phân quyền chức danh";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3">
+        <!-- Timeline Widget -->
+        <div class="widget">
+            <div class="widget-extra themed-background-dark">
+                <h3 class="widget-content-light">
+                    <strong>Chức danh</strong>
+                </h3>
+                <div class="widget-options" style="opacity: 1;">
+                    <a href="javascript:void(0);" data-toggle="modal" data-target="#modal_add_role" data-backdrop="static" data-keyboard="false" class="btn btn-success btn-lg btn-block" style="margin-top: 3px;">
+                        <i class="fa fa-plus"></i>
+                    </a>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="modal_add_role" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">
+                                        <i class="fa fa-plus"></i> Thêm mới chức danh
+                                    </h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label>Tên chức danh<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control form-control-lg" placeholder="Nhập tên chức danh..">
+                                        <span class="help-block">Vui lòng nhập tên chức danh mà bạn muốn thêm</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Kích hoạt<span class="text-danger">*</span></label>
+                                        <div>
+                                            <label class="switch switch-success">
+                                                <input type="checkbox" checked=""><span></span>
+                                            </label>
+                                        </div>
+                                        <span class="help-block">Kích hoạt chức danh, cho phép chức danh này quản trị hệ thống</span>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Huỷ bỏ</button>
+                                    <button type="button" class="btn btn-success btn-lg">
+                                        <i class="fa fa-check"></i> Đồng ý
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Modal -->
+                </div>
+            </div>
+            <div class="widget-extra" style="height: auto !important;">   
+                <div style="padding: 10px 0;">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-condensed middle-verticle">
+                            <tbody>
+                                <tr>
+                                    <td class="text-nowrap visible-on-hover-wrap" style="overflow: hidden;">
+                                        <h4><strong>Super Admin</strong></h4>
+                                        <div class="visible-on-hover" style="position: absolute; right: 7px; top: 5px;">
+                                            <label class="switch switch-success" data-toggle="tooltip" title="Kích hoạt chức danh này được phép quản trị" style="top: 3px;">
+                                                <input type="checkbox" checked=""><span></span>
+                                            </label>
+                                            <div class="btn-group">
+                                                <a href="javascript:void(0);" class="btn btn-info" data-toggle="modal" data-target="#modal_edit_role" data-backdrop="static" data-keyboard="false">
+                                                    <i class="fa fa-pencil"></i>
+                                                </a>
+                                                <a href="javascript:void(0);" class="btn btn-danger" onclick="return confirm('Bạn chắc chắn xoá mục Super Admin ?');">
+                                                    <i class="gi gi-bin"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="modal_edit_role" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                        <h4 class="modal-title" id="myModalLabel">
+                                                            <i class="fa fa-pencil"></i> Chỉnh sửa chức danh
+                                                        </h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="form-group">
+                                                            <label>Tên chức danh<span class="text-danger">*</span></label>
+                                                            <input type="text" class="form-control form-control-lg" placeholder="Nhập tên chức danh.." value="Super Admin">
+                                                            <span class="help-block">Vui lòng nhập tên chức danh mà bạn muốn thêm</span>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Kích hoạt<span class="text-danger">*</span></label>
+                                                            <div>
+                                                                <label class="switch switch-success">
+                                                                    <input type="checkbox" checked=""><span></span>
+                                                                </label>
+                                                            </div>
+                                                            <span class="help-block">Kích hoạt chức danh, cho phép chức danh này quản trị hệ thống</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Huỷ bỏ</button>
+                                                        <button type="button" class="btn btn-success btn-lg">
+                                                            <i class="fa fa-check"></i> Đồng ý
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Modal -->
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-nowrap visible-on-hover-wrap" style="overflow: hidden;">
+                                        <h4><strong>Super Admin</strong></h4>
+                                        <div class="visible-on-hover" style="position: absolute; right: 7px; top: 5px;">
+                                            <label class="switch switch-success" data-toggle="tooltip" title="Kích hoạt chức danh này được phép quản trị" style="top: 3px;">
+                                                <input type="checkbox" checked=""><span></span>
+                                            </label>
+                                            <div class="btn-group">
+                                                <a href="javascript:void(0);" class="btn btn-info">
+                                                    <i class="fa fa-pencil"></i>
+                                                </a>
+                                                <a href="javascript:void(0);" class="btn btn-danger">
+                                                    <i class="gi gi-bin"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-nowrap visible-on-hover-wrap" style="overflow: hidden;">
+                                        <h4><strong>Quản trị tin tức</strong></h4>
+                                        <div class="visible-on-hover" style="position: absolute; right: 7px; top: 5px;">
+                                            <label class="switch switch-success" data-toggle="tooltip" title="Kích hoạt chức danh này được phép quản trị" style="top: 3px;">
+                                                <input type="checkbox" checked=""><span></span>
+                                            </label>
+                                            <div class="btn-group">
+                                                <a href="javascript:void(0);" class="btn btn-info">
+                                                    <i class="fa fa-pencil"></i>
+                                                </a>
+                                                <a href="javascript:void(0);" class="btn btn-danger">
+                                                    <i class="gi gi-bin"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-nowrap visible-on-hover-wrap" style="overflow: hidden;">
+                                        <h4><strong>Quản trị sản phẩm</strong></h4>
+                                        <div class="visible-on-hover" style="position: absolute; right: 7px; top: 5px;">
+                                            <label class="switch switch-success" data-toggle="tooltip" title="Kích hoạt chức danh này được phép quản trị" style="top: 3px;">
+                                                <input type="checkbox" checked=""><span></span>
+                                            </label>
+                                            <div class="btn-group">
+                                                <a href="javascript:void(0);" class="btn btn-info">
+                                                    <i class="fa fa-pencil"></i>
+                                                </a>
+                                                <a href="javascript:void(0);" class="btn btn-danger">
+                                                    <i class="gi gi-bin"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-nowrap visible-on-hover-wrap" style="overflow: hidden;">
+                                        <h4><strong>Quản trị khuyến mãi</strong></h4>
+                                        <div class="visible-on-hover" style="position: absolute; right: 7px; top: 5px;">
+                                            <label class="switch switch-success" data-toggle="tooltip" title="Kích hoạt chức danh này được phép quản trị" style="top: 3px;">
+                                                <input type="checkbox" checked=""><span></span>
+                                            </label>
+                                            <div class="btn-group">
+                                                <a href="javascript:void(0);" class="btn btn-info">
+                                                    <i class="fa fa-pencil"></i>
+                                                </a>
+                                                <a href="javascript:void(0);" class="btn btn-danger">
+                                                    <i class="gi gi-bin"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td class="text-nowrap visible-on-hover-wrap" style="overflow: hidden;">
+                                        <h4><strong>Quản trị liên hệ khách hàng</strong></h4>
+                                        <div class="visible-on-hover" style="position: absolute; right: 7px; top: 5px;">
+                                            <label class="switch switch-success" data-toggle="tooltip" title="Kích hoạt chức danh này được phép quản trị" style="top: 3px;">
+                                                <input type="checkbox" checked=""><span></span>
+                                            </label>
+                                            <div class="btn-group">
+                                                <a href="javascript:void(0);" class="btn btn-info">
+                                                    <i class="fa fa-pencil"></i>
+                                                </a>
+                                                <a href="javascript:void(0);" class="btn btn-danger">
+                                                    <i class="gi gi-bin"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td class="text-nowrap visible-on-hover-wrap" style="overflow: hidden;">
+                                        <h4><strong>Quản trị thư viện</strong></h4>
+                                        <div class="visible-on-hover" style="position: absolute; right: 7px; top: 5px;">
+                                            <label class="switch switch-success" data-toggle="tooltip" title="Kích hoạt chức danh này được phép quản trị" style="top: 3px;">
+                                                <input type="checkbox" checked=""><span></span>
+                                            </label>
+                                            <div class="btn-group">
+                                                <a href="javascript:void(0);" class="btn btn-info">
+                                                    <i class="fa fa-pencil"></i>
+                                                </a>
+                                                <a href="javascript:void(0);" class="btn btn-danger">
+                                                    <i class="gi gi-bin"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END Timeline Widget -->
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-9">
+        <!-- Timeline Widget -->
+        <div class="widget">
+            <div class="widget-extra themed-background-dark">
+                <h3 class="widget-content-light">
+                    <strong>@ViewBag.Title</strong>
+                </h3>
+            </div>
+            <div class="widget-extra" style="height: auto !important;">  
+                <div style="padding: 10px 0;">           
+                    
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-condensed middle-verticle">
+                            <thead class="tbhead-color">
+                                <tr>
+                                    <th class="text-left text-nowrap">
+                                        TÊN PHÂN QUYỀN
+                                    </th>
+                                    <th class="text-center text-nowrap" style="width: 1%;">
+                                        <i class="fa fa-eye"></i> XEM
+                                    </th>                            
+                                    <th class="text-center text-nowrap" style="width: 1%;">
+                                        <i class="fa fa-plus"></i> THÊM
+                                    </th>                         
+                                    <th class="text-center text-nowrap" style="width: 1%;">
+                                        <i class="fa fa-pencil"></i> SỬA
+                                    </th>                         
+                                    <th class="text-center text-nowrap" style="width: 1%;">
+                                        <i class="fa fa-times"></i> XOÁ
+                                    </th>
+                                    <th class="text-center text-nowrap" style="width: 1%;">
+                                        THỰC THI
+                                    </th>                            
+                                    <th class="text-center text-nowrap" style="width: 1%;">
+                                        TẤT CẢ
+                                    </th>
+                                </tr>
+                            </thead>
+                    
+                            <tbody class="tbhead-color">
+                                <tr>
+                                    <th class="text-left text-nowrap">
+                                        <strong>TẤT CẢ CÁC PHÂN QUYỀN</strong>
+                                    </th>
+                                    <th class="text-nowrap text-center"><label class="switch switch-danger"><input type="checkbox" checked=""><span></span></label></th>
+                                    <th class="text-nowrap text-center"><label class="switch switch-danger"><input type="checkbox" checked=""><span></span></label></th>
+                                    <th class="text-nowrap text-center"><label class="switch switch-danger"><input type="checkbox" checked=""><span></span></label></th>
+                                    <th class="text-nowrap text-center"><label class="switch switch-danger"><input type="checkbox" checked=""><span></span></label></th>
+                                    <th class="text-nowrap text-center"><label class="switch switch-danger"><input type="checkbox" checked=""><span></span></label></th>
+                                    <th class="text-nowrap text-center"><label class="switch switch-danger"><input type="checkbox" checked=""><span></span></label></th>
+                                </tr>
+                            </tbody>
+
+                            <tbody class="tbhead-color">
+                                <tr>
+                                    <th class="text-left text-nowrap">
+                                        Quản trị nội dung
+                                    </th>
+                                    <th class="text-nowrap text-center"><label class="switch switch-warning"><input type="checkbox" checked=""><span></span></label></th>
+                                    <th class="text-nowrap text-center"><label class="switch switch-warning"><input type="checkbox" checked=""><span></span></label></th>
+                                    <th class="text-nowrap text-center"><label class="switch switch-warning"><input type="checkbox" checked=""><span></span></label></th>
+                                    <th class="text-nowrap text-center"><label class="switch switch-warning"><input type="checkbox" checked=""><span></span></label></th>
+                                    <th class="text-nowrap text-center"><label class="switch switch-warning"><input type="checkbox" checked=""><span></span></label></th>
+                                    <th class="text-nowrap text-center"><label class="switch switch-warning"><input type="checkbox" checked=""><span></span></label></th>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td class="text-nowrap"><strong>Tin tức</strong></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-nowrap"><strong>Sản phẩm</strong></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                </tr>
+                            </tbody>
+                            <tbody class="tbhead-color">
+                                <tr>
+                                    <th class="text-left text-nowrap">
+                                        Chăm sóc khách hàng
+                                    </th>
+                                    <th class="text-nowrap text-center"><label class="switch switch-warning"><input type="checkbox" checked=""><span></span></label></th>
+                                    <th class="text-nowrap text-center"><label class="switch switch-warning"><input type="checkbox" checked=""><span></span></label></th>
+                                    <th class="text-nowrap text-center"><label class="switch switch-warning"><input type="checkbox" checked=""><span></span></label></th>
+                                    <th class="text-nowrap text-center"><label class="switch switch-warning"><input type="checkbox" checked=""><span></span></label></th>
+                                    <th class="text-nowrap text-center"><label class="switch switch-warning"><input type="checkbox" checked=""><span></span></label></th>
+                                    <th class="text-nowrap text-center"><label class="switch switch-warning"><input type="checkbox" checked=""><span></span></label></th>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td class="text-nowrap"><strong>Tin tức</strong></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-nowrap"><strong>Sản phẩm</strong></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-nowrap"><strong>Tin tức</strong></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-nowrap"><strong>Sản phẩm</strong></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                </tr>
+                            </tbody><tbody class="tbhead-color">
+                                <tr>
+                                    <th class="text-left text-nowrap">
+                                        Chăm sóc khách hàng
+                                    </th>
+                                    <th class="text-nowrap text-center"><label class="switch switch-warning"><input type="checkbox" checked=""><span></span></label></th>
+                                    <th class="text-nowrap text-center"><label class="switch switch-warning"><input type="checkbox" checked=""><span></span></label></th>
+                                    <th class="text-nowrap text-center"><label class="switch switch-warning"><input type="checkbox" checked=""><span></span></label></th>
+                                    <th class="text-nowrap text-center"><label class="switch switch-warning"><input type="checkbox" checked=""><span></span></label></th>
+                                    <th class="text-nowrap text-center"><label class="switch switch-warning"><input type="checkbox" checked=""><span></span></label></th>
+                                    <th class="text-nowrap text-center"><label class="switch switch-warning"><input type="checkbox" checked=""><span></span></label></th>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td class="text-nowrap"><strong>Tin tức</strong></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-nowrap"><strong>Sản phẩm</strong></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-nowrap"><strong>Tin tức</strong></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-nowrap"><strong>Sản phẩm</strong></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                    <td class="text-nowrap text-center"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END Timeline Widget -->
+    </div>
+</div>
+
+

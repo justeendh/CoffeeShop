@@ -1,0 +1,118 @@
+﻿@using CoffeeShop.Models
+@model ModelImageCrop
+
+<label style="cursor: pointer; position: relative; width: 100%;">                                    
+    <a id="@Model.ClearButtonID" class="btn btn-danger" style="position: absolute; right: 5px; top: 5px; display: none;">
+        <i class="fa fa-times"></i>
+    </a>
+    <img id="@Model.TargetUpdate" src="@Model.NoImageUrl" style="width: 100%;"> 
+    <input type="file" id="@Model.FileInputID" style="display: none;"  />
+</label>               
+<input type="hidden" id="@Model.TargetInputUpdate" value="">
+
+<!-- Modal -->
+
+<input type="hidden" id="no_image_@Model.JQModalSelector" value="@Model.NoImageUrl"/>
+<div class="modal fade" id="@Model.JQModalSelector" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">
+                    <i class="fa fa-crop"></i> @Model.NameCrop
+                </h4>
+            </div>
+            <div class="modal-body" id="modalbody_@Model.JQModalSelector">
+                <!-- Wrap the image or canvas element with a block element (container) -->
+                <div>
+                    <img id="@Model.ImageID" src="">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Huỷ bỏ</button>
+                <button type="button" id="btn_done_@Model.JQModalSelector" class="btn btn-success btn-lg">
+                    <i class="fa fa-check"></i> Đồng ý
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal -->
+
+<script type="text/javascript">
+    var Image_@Model.JQModalSelector = null;
+    $('#@Model.TargetUpdate').attr('src', '@Model.NoImageUrl');
+
+    $("#@Model.FileInputID").on("click", function () {
+        this.value = null;
+    });
+
+    $("#@Model.ClearButtonID").on("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        $('#@Model.TargetUpdate').attr('src', '@Model.NoImageUrl');
+        $('#@Model.TargetInputUpdate').val('');
+        $("#@Model.ClearButtonID").hide();
+    });
+
+    $("#@Model.FileInputID").change(function () {
+        var files = this.files, file;
+        if (files && files.length) {
+            file = files[0];
+
+            if (/^image\/\w+$/.test(file.type)) {
+                blobURL = URL.createObjectURL(file);
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#@Model.ImageID').attr('src', e.target.result);
+                    $('#@(Model.JQModalSelector)').modal({ backdrop: 'static', keyboard: false });
+                }
+                reader.readAsDataURL(file);
+            } else {
+                showMessage('Vui lòng chọn file hình ảnh.');
+            }
+        }
+    });
+
+    function SetCropModal_@(Model.JQModalSelector)()
+    {
+        $('#@Model.ImageID').cropper("destroy");
+        $('#@Model.ImageID').cropper({
+            viewMode: @Model.ViewMode,
+            aspectRatio: @(Math.Round((decimal)Model.WidthImage / Model.HeightImage, 1)),
+            minContainerWidth: $("#modalbody_@Model.JQModalSelector").width(),
+            responsive: true, movable: false,
+            zoomable: false,
+            rotatable: false,
+            scalable: false,
+            crop: function (e) {
+                // Output the result data for cropping image.
+                console.log(e.x);
+                console.log(e.y);
+                console.log(e.width);
+                console.log(e.height);
+                console.log(e.rotate);
+                console.log(e.scaleX);
+                console.log(e.scaleY);
+            }
+        });
+    }
+
+    $('#@Model.JQModalSelector').on('shown.bs.modal', function (e) {
+        SetCropModal_@(Model.JQModalSelector)();
+    })
+
+    $("#btn_done_@Model.JQModalSelector").on("click", function () {
+        var dataBase64 = $('#@Model.ImageID').cropper('getCroppedCanvas').toDataURL();
+        $('#@Model.TargetUpdate').attr('src', dataBase64);
+        $('#@Model.TargetInputUpdate').val(dataBase64);
+        $('#@(Model.JQModalSelector)').modal("hide");
+        $("#@Model.ClearButtonID").show();
+    });
+
+    $(window).resize(function () {
+
+    });
+
+
+</script>

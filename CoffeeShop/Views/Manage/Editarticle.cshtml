@@ -1,0 +1,149 @@
+﻿@using CoffeeShop.Models;
+@{
+    ViewBag.Title = "Chỉnh sửa bài viết";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-8">
+        <!-- Timeline Widget -->
+        <div class="widget">
+            <div class="widget-extra themed-background-dark">
+                <h3 class="widget-content-light">
+                    <strong><i class="fa fa-pencil"></i> @ViewBag.Title - AID: 123</strong>
+                </h3>
+            </div>
+            <div class="widget-extra" style="height: auto !important;">
+                <div style="padding: 10px 0;">
+                    <!-- General Data Content -->
+                    <form action="page_ecom_product_edit.html" method="post">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-3 col-md-4">
+                                <div style="margin-bottom: 10px;">
+                
+                                    @Html.Partial("/Views/Shared/_CropImage.cshtml",
+                                       new ModelImageCrop() { FileInputID = "file_avt_select", TargetUpdate = "avt_target_prv", TargetInputUpdate = "avt_target_upload",
+                                           ImageID = "imagearticleImage", JQModalSelector = "imagearticle", ViewMode = 2, NoImageUrl = "/img/no-image.jpg",
+                                           NameCrop = "Cắt hình ảnh", aspectRatio = true, HeightImage = 600, WidthImage = 800, ClearButtonID = "btn_clearimage"
+                                       })
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-9 col-md-8">
+                                <div class="form-group">
+                                    <label for="product-name">Tên sản phẩm</label>
+                                    <input type="text" id="product-name" name="product-name" class="form-control form-control-lg" placeholder="Tên bài viết..">
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="product-category">Danh mục sản phẩm</label>
+                                            <!-- Chosen plugin (class is initialized in js/app.js -> uiInit()), for extra usage examples you can check out http://harvesthq.github.io/chosen/ -->
+                                            <select id="product-category" name="product-category" class="select-chosen" data-placeholder="Chọn danh mục..">
+                                                <option></option><!-- Required for data-placeholder attribute to work with Chosen plugin -->
+                                                <option selected value="1">Tablets</option>
+                                                <option value="2">Laptops</option>
+                                                <option value="3">PCs</option>
+                                                <option value="4">Consoles</option>
+                                                <option value="5">Movies</option>
+                                                <option value="6">Books</option>
+                                                <option value="7">Cables</option>
+                                                <option value="8">Adapters</option>
+                                                <option value="9">Office</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="product-name">Nguồn tin:</label>
+                                            <input type="text" id="product-name" name="product-name" class="form-control form-control-lg" placeholder="Nguồn tin..">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="product-short-description">Mô tả ngắn sản phẩm</label>
+                            <textarea id="product-short-description" name="product-short-description" class="ckeditor" rows="6" style="resize: vertical"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <div><label>Đăng tin?</label></div>
+                            <label class="switch switch-success">
+                                <input type="checkbox" id="product-status" name="product-status" checked><span></span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-lg btn-success"><i class="fa fa-floppy-o"></i> Save</button>
+                            <button type="reset" class="btn btn-lg btn-warning"><i class="fa fa-repeat"></i> Reset</button>
+                        </div>
+                        <div class="form-group">
+                            <label for="product-description">Mô tả chi tiết sản phẩm</label>
+                            <textarea id="product-description" name="product-description"></textarea>
+                        </div>
+                    </form>
+                    <!-- END General Data Content -->
+                </div>
+            </div>
+        </div>
+        <!-- END Timeline Widget -->
+    </div>
+    <div class="col-lg-4">
+        <!-- Timeline Widget -->
+        <div class="widget">
+            <div class="widget-extra themed-background-dark">
+                <h3 class="widget-content-light">
+                    <strong><i class="fa fa-code"></i> Meta data</strong>
+                </h3>
+            </div>
+            <div class="widget-extra" style="height: auto !important;">
+                <div style="padding: 10px 0;">
+                    <p class="text-success"><strong>Nội dung hiển thị trên các công cụ tìm kiếm khi khách hàng tìm kiếm sản phẩm</strong></p>
+                    <div class="form-group">
+                        <label for="product-meta-title">Meta Title</label>
+                        <input type="text" id="product-meta-title" name="product-meta-title" class="form-control form-control-lg" placeholder="Nhập meta title..">
+                    </div>
+                    <div class="form-group">
+                        <label for="product-meta-keywords">Meta Keywords</label>
+                        <input type="text" id="product-meta-keywords" name="product-meta-keywords" class="form-control form-control-lg" placeholder="Nhập keyword1, keyword2, keyword3">
+                    </div>
+                    <div class="form-group">
+                        <label for="product-meta-description">Meta Description</label>
+                        <textarea id="product-meta-description" name="product-meta-description" class="form-control form-control-lg" rows="6" placeholder="Nhập meta description.."></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END Timeline Widget -->
+        
+    </div>
+</div>
+
+<script id="ImageItemTmpl" type="text/x-jquery-tmpl">
+    <tr>
+        <td style="width: 20%;">
+            <a href="/img/luffy-avt.jpg" data-toggle="lightbox-image">
+                <img src="/img/luffy-avt.jpg" alt="" class="img-responsive center-block" style="max-width: 100%; height: 50px">
+            </a>
+        </td>
+        <td class="text-center">
+            <label class="switch switch-success">
+                <input type="radio" name="primary"><span></span>
+            </label>
+        </td>
+        <td class="text-center">
+            <a href="javascript:void(0)" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
+        </td>
+    </tr>
+</script>
+
+<script>
+    CKEDITOR.replace('product-description', { height: 300 });
+
+    var movies = [{ a: 1 }, { a: 2 }, { a: 2 }, { a: 2 }, { a: 2 }];
+    $("#ImageItemTmpl").tmpl(movies).appendTo("#ImagesprdList");
+
+</script>

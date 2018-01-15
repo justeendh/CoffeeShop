@@ -1,0 +1,686 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CoffeeShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ARTICLES">
+          <Key>
+            <PropertyRef Name="KEY_ARTICLE" />
+          </Key>
+          <Property Name="KEY_ARTICLE" Type="int" Nullable="false" />
+          <Property Name="NAME_ARTICLE" Type="nvarchar(max)" />
+          <Property Name="DESCRIPTION_ARTICLE" Type="nvarchar(max)" />
+          <Property Name="CONTENT_ARTICLE" Type="nvarchar(max)" />
+          <Property Name="TAG_ARTICLE" Type="nvarchar(max)" />
+          <Property Name="IMAGE_ARTICLE" Type="nvarchar(max)" />
+          <Property Name="IS_SHOW_ARTICLE" Type="bit" />
+          <Property Name="IS_HIGHLIGHT_ARTICLE" Type="bit" />
+          <Property Name="ORDER_INDEX" Type="int" />
+          <Property Name="DATE_CREATED_ARTICLE" Type="datetime" />
+          <Property Name="DATE_UPDATE_ARTICLE" Type="datetime" />
+          <Property Name="KEY_GROUP_ARTICLE" Type="int" />
+          <Property Name="MODULE_ARTICLE" Type="varchar" MaxLength="50" />
+          <Property Name="META_TITLE" Type="nvarchar(max)" />
+          <Property Name="META_KEYWORDS" Type="nvarchar(max)" />
+          <Property Name="META_DESCRIPTION" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="CARTS">
+          <Key>
+            <PropertyRef Name="KEY_CART" />
+          </Key>
+          <Property Name="KEY_CART" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NAME_CART" Type="nvarchar(max)" />
+          <Property Name="ADDRESS_CART" Type="nvarchar(max)" />
+          <Property Name="PHONE_CART" Type="nvarchar(max)" />
+          <Property Name="CONTENT_CART" Type="nvarchar(max)" />
+          <Property Name="STATUS_CART" Type="int" />
+          <Property Name="KEY_USER" Type="nvarchar" MaxLength="128" />
+          <Property Name="CODE_PROMOTION" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="CONTACTS">
+          <Key>
+            <PropertyRef Name="KEY_CONTACT" />
+          </Key>
+          <Property Name="KEY_CONTACT" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MODULE_CONTACT" Type="varchar(max)" />
+          <Property Name="GROUP_CONTACT" Type="int" />
+          <Property Name="NAME_CONTACT" Type="nvarchar(max)" />
+          <Property Name="TITLE_CONTACT" Type="nvarchar(max)" />
+          <Property Name="EMAIL_CONTACT" Type="nvarchar(max)" />
+          <Property Name="PHONE_CONTACT" Type="nvarchar(max)" />
+          <Property Name="CONTENT_CONTACT" Type="nvarchar(max)" />
+          <Property Name="DATE_CREATED" Type="datetime" />
+          <Property Name="STATUS_CONTACT" Type="int" />
+        </EntityType>
+        <EntityType Name="DETAILS_CART">
+          <Key>
+            <PropertyRef Name="KEY_CART" />
+            <PropertyRef Name="KEY_DETAIL" />
+          </Key>
+          <Property Name="KEY_CART" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="KEY_DETAIL" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="KEY_PRODUCT" Type="int" />
+          <Property Name="PRICE_PRODUCT" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="QUANTITY_PRODUCT" Type="int" />
+          <Property Name="NOTE_DETAIL" Type="nvarchar(max)" />
+          <Property Name="SORT_INDEX" Type="int" />
+        </EntityType>
+        <EntityType Name="GROUPS">
+          <Key>
+            <PropertyRef Name="KEY_GROUP" />
+          </Key>
+          <Property Name="KEY_GROUP" Type="int" Nullable="false" />
+          <Property Name="NAME_GROUP" Type="nvarchar(max)" />
+          <Property Name="DESCRIPTION_GROUP" Type="nvarchar(max)" />
+          <Property Name="ENABLE_GROUP" Type="bit" />
+          <Property Name="SORT_INDEX" Type="int" />
+          <Property Name="MODULE" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="GROUPS_PERMISSITON">
+          <Key>
+            <PropertyRef Name="KEY_GROUP" />
+          </Key>
+          <Property Name="KEY_GROUP" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NAME_GROUP" Type="nvarchar(max)" />
+          <Property Name="SORT_INDEX" Type="int" />
+        </EntityType>
+        <EntityType Name="IMAGES">
+          <Key>
+            <PropertyRef Name="KEY_IMAGE" />
+          </Key>
+          <Property Name="KEY_IMAGE" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MODULE" Type="varchar(max)" />
+          <Property Name="KEY_RELATED" Type="int" />
+          <Property Name="RELATED_TYPE" Type="varchar(max)" />
+          <Property Name="NAME_IMAGE" Type="nvarchar(max)" />
+          <Property Name="DESCRIPTION_IMAGE" Type="nvarchar(max)" />
+          <Property Name="URL_IMAGE" Type="nvarchar(max)" />
+          <Property Name="VISIBLE_IMAGE" Type="bit" />
+          <Property Name="SORT_INDEX" Type="int" />
+          <Property Name="DATE_CREATED" Type="datetime" />
+          <Property Name="SOURCE_IMAGE" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="PERMISSIONS">
+          <Key>
+            <PropertyRef Name="KEY_PERMISSION" />
+          </Key>
+          <Property Name="KEY_PERMISSION" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KEY_MODULE" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="NAME_PERMISSION" Type="nvarchar(max)" />
+          <Property Name="DESCRIPTION_PERMISSION" Type="nvarchar(max)" />
+          <Property Name="ENABLE_PERMISSION" Type="bit" />
+          <Property Name="SORT_INDEX" Type="int" />
+          <Property Name="KEY_GROUP" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TYPE_MODULE" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="PRODUCTS">
+          <Key>
+            <PropertyRef Name="KEY_PRODUCT" />
+          </Key>
+          <Property Name="KEY_PRODUCT" Type="int" Nullable="false" />
+          <Property Name="GROUP_PRODUCT" Type="int" />
+          <Property Name="MODULE_PRODUCT" Type="varchar(max)" />
+          <Property Name="NAME_PRODUCT" Type="nvarchar(max)" />
+          <Property Name="DESCRIPTION_PRODUCT" Type="nvarchar(max)" />
+          <Property Name="CONTENT_PRODUCT" Type="nvarchar(max)" />
+          <Property Name="IMAGE_PRODUCT" Type="nvarchar(max)" />
+          <Property Name="PRICE_PRODUCT" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="SALES_PRODUCT" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="MONEY_SALE_PRODUCT" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="PINED_PRODUCT" Type="bit" />
+          <Property Name="SALE_DAY_COUNT" Type="int" />
+          <Property Name="SALE_MONTH_COUNT" Type="int" />
+          <Property Name="SALE_DAY_UPDATED" Type="datetime" />
+          <Property Name="SALE_MONTH_UPDATED" Type="datetime" />
+          <Property Name="RATE_POINT" Type="int" />
+          <Property Name="RATE_COUNT" Type="int" />
+          <Property Name="DATE_CREATED" Type="datetime" />
+          <Property Name="DATE_UPDATED" Type="datetime" />
+          <Property Name="ENABLE_PRODUCT" Type="bit" />
+          <Property Name="META_TITLE" Type="nvarchar(max)" />
+          <Property Name="META_KEYWORDS" Type="nvarchar(max)" />
+          <Property Name="META_DESCRIPTION" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="RULE_PERMISSIONS">
+          <Key>
+            <PropertyRef Name="KEY_PERMISSTION" />
+            <PropertyRef Name="KEY_RULE" />
+          </Key>
+          <Property Name="KEY_PERMISSTION" Type="int" Nullable="false" />
+          <Property Name="KEY_RULE" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ENABLE_VIEW" Type="bit" />
+          <Property Name="ENABLE_ADD" Type="bit" />
+          <Property Name="ENABLE_MODIFY" Type="bit" />
+          <Property Name="ENABLE_DELETE" Type="bit" />
+          <Property Name="ENABLE_EXECUTE" Type="bit" />
+          <Property Name="AVALABLE_ACTION" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="RULES">
+          <Key>
+            <PropertyRef Name="KEY_RULE" />
+          </Key>
+          <Property Name="KEY_RULE" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NAME_RULE" Type="nvarchar(max)" />
+          <Property Name="ENABLE_RULE" Type="bit" />
+          <Property Name="DATE_CREATED" Type="datetime" />
+          <Property Name="SORT_INDEX" Type="int" />
+        </EntityType>
+        <EntityType Name="USER_RULES">
+          <Key>
+            <PropertyRef Name="KEY_USER" />
+            <PropertyRef Name="KEY_RULE" />
+          </Key>
+          <Property Name="KEY_USER" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="KEY_RULE" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ENABLE" Type="bit" />
+        </EntityType>
+        <EntityType Name="UserAddress">
+          <Key>
+            <PropertyRef Name="IdUser" />
+            <PropertyRef Name="KeyAddress" />
+          </Key>
+          <Property Name="IdUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="KeyAddress" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NameAddress" Type="nvarchar(max)" />
+          <Property Name="DetailAddress" Type="nvarchar(max)" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="PhoneAddress" Type="nvarchar(max)" />
+          <Property Name="IsDefault" Type="bit" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="EnableUser" Type="bit" />
+          <Property Name="LockAccessFailed" Type="bit" />
+          <Property Name="Online" Type="bit" />
+          <Property Name="IsAdmin" Type="bit" />
+        </EntityType>
+        <EntityContainer Name="CoffeeShopModelStoreContainer">
+          <EntitySet Name="ARTICLES" EntityType="Self.ARTICLES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CARTS" EntityType="Self.CARTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CONTACTS" EntityType="Self.CONTACTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DETAILS_CART" EntityType="Self.DETAILS_CART" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GROUPS" EntityType="Self.GROUPS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GROUPS_PERMISSITON" EntityType="Self.GROUPS_PERMISSITON" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IMAGES" EntityType="Self.IMAGES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PERMISSIONS" EntityType="Self.PERMISSIONS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCTS" EntityType="Self.PRODUCTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RULE_PERMISSIONS" EntityType="Self.RULE_PERMISSIONS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RULES" EntityType="Self.RULES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER_RULES" EntityType="Self.USER_RULES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserAddress" EntityType="Self.UserAddress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CoffeeShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CoffeeShopEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ARTICLES" EntityType="CoffeeShopModel.ARTICLE" />
+          <EntitySet Name="CARTS" EntityType="CoffeeShopModel.CART" />
+          <EntitySet Name="CONTACTS" EntityType="CoffeeShopModel.CONTACT" />
+          <EntitySet Name="DETAILS_CART" EntityType="CoffeeShopModel.DETAILS_CART" />
+          <EntitySet Name="GROUPS" EntityType="CoffeeShopModel.GROUP" />
+          <EntitySet Name="GROUPS_PERMISSITON" EntityType="CoffeeShopModel.GROUPS_PERMISSITON" />
+          <EntitySet Name="IMAGES" EntityType="CoffeeShopModel.IMAGE" />
+          <EntitySet Name="PERMISSIONS" EntityType="CoffeeShopModel.PERMISSION" />
+          <EntitySet Name="PRODUCTS" EntityType="CoffeeShopModel.PRODUCT" />
+          <EntitySet Name="RULE_PERMISSIONS" EntityType="CoffeeShopModel.RULE_PERMISSIONS" />
+          <EntitySet Name="RULES" EntityType="CoffeeShopModel.RULE" />
+          <EntitySet Name="USER_RULES" EntityType="CoffeeShopModel.USER_RULES" />
+          <EntitySet Name="UserAddresses" EntityType="CoffeeShopModel.UserAddress" />
+          <EntitySet Name="Users" EntityType="CoffeeShopModel.User" />
+        </EntityContainer>
+        <EntityType Name="ARTICLE">
+          <Key>
+            <PropertyRef Name="KEY_ARTICLE" />
+          </Key>
+          <Property Name="KEY_ARTICLE" Type="Int32" Nullable="false" />
+          <Property Name="NAME_ARTICLE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DESCRIPTION_ARTICLE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CONTENT_ARTICLE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TAG_ARTICLE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IMAGE_ARTICLE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IS_SHOW_ARTICLE" Type="Boolean" />
+          <Property Name="IS_HIGHLIGHT_ARTICLE" Type="Boolean" />
+          <Property Name="ORDER_INDEX" Type="Int32" />
+          <Property Name="DATE_CREATED_ARTICLE" Type="DateTime" Precision="3" />
+          <Property Name="DATE_UPDATE_ARTICLE" Type="DateTime" Precision="3" />
+          <Property Name="KEY_GROUP_ARTICLE" Type="Int32" />
+          <Property Name="MODULE_ARTICLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="META_TITLE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="META_KEYWORDS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="META_DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CART">
+          <Key>
+            <PropertyRef Name="KEY_CART" />
+          </Key>
+          <Property Name="KEY_CART" Type="Guid" Nullable="false" />
+          <Property Name="NAME_CART" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ADDRESS_CART" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PHONE_CART" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CONTENT_CART" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="STATUS_CART" Type="Int32" />
+          <Property Name="KEY_USER" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CODE_PROMOTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CONTACT">
+          <Key>
+            <PropertyRef Name="KEY_CONTACT" />
+          </Key>
+          <Property Name="KEY_CONTACT" Type="Guid" Nullable="false" />
+          <Property Name="MODULE_CONTACT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="GROUP_CONTACT" Type="Int32" />
+          <Property Name="NAME_CONTACT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TITLE_CONTACT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL_CONTACT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PHONE_CONTACT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CONTENT_CONTACT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DATE_CREATED" Type="DateTime" Precision="3" />
+          <Property Name="STATUS_CONTACT" Type="Int32" />
+        </EntityType>
+        <EntityType Name="DETAILS_CART">
+          <Key>
+            <PropertyRef Name="KEY_CART" />
+            <PropertyRef Name="KEY_DETAIL" />
+          </Key>
+          <Property Name="KEY_CART" Type="Guid" Nullable="false" />
+          <Property Name="KEY_DETAIL" Type="Guid" Nullable="false" />
+          <Property Name="KEY_PRODUCT" Type="Int32" />
+          <Property Name="PRICE_PRODUCT" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="QUANTITY_PRODUCT" Type="Int32" />
+          <Property Name="NOTE_DETAIL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SORT_INDEX" Type="Int32" />
+        </EntityType>
+        <EntityType Name="GROUP">
+          <Key>
+            <PropertyRef Name="KEY_GROUP" />
+          </Key>
+          <Property Name="KEY_GROUP" Type="Int32" Nullable="false" />
+          <Property Name="NAME_GROUP" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DESCRIPTION_GROUP" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ENABLE_GROUP" Type="Boolean" />
+          <Property Name="SORT_INDEX" Type="Int32" />
+          <Property Name="MODULE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="GROUPS_PERMISSITON">
+          <Key>
+            <PropertyRef Name="KEY_GROUP" />
+          </Key>
+          <Property Name="KEY_GROUP" Type="Guid" Nullable="false" />
+          <Property Name="NAME_GROUP" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SORT_INDEX" Type="Int32" />
+        </EntityType>
+        <EntityType Name="IMAGE">
+          <Key>
+            <PropertyRef Name="KEY_IMAGE" />
+          </Key>
+          <Property Name="KEY_IMAGE" Type="Guid" Nullable="false" />
+          <Property Name="MODULE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="KEY_RELATED" Type="Int32" />
+          <Property Name="RELATED_TYPE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NAME_IMAGE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DESCRIPTION_IMAGE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="URL_IMAGE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VISIBLE_IMAGE" Type="Boolean" />
+          <Property Name="SORT_INDEX" Type="Int32" />
+          <Property Name="DATE_CREATED" Type="DateTime" Precision="3" />
+          <Property Name="SOURCE_IMAGE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PERMISSION">
+          <Key>
+            <PropertyRef Name="KEY_PERMISSION" />
+          </Key>
+          <Property Name="KEY_PERMISSION" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KEY_MODULE" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="NAME_PERMISSION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DESCRIPTION_PERMISSION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ENABLE_PERMISSION" Type="Boolean" />
+          <Property Name="SORT_INDEX" Type="Int32" />
+          <Property Name="KEY_GROUP" Type="Guid" Nullable="false" />
+          <Property Name="TYPE_MODULE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PRODUCT">
+          <Key>
+            <PropertyRef Name="KEY_PRODUCT" />
+          </Key>
+          <Property Name="KEY_PRODUCT" Type="Int32" Nullable="false" />
+          <Property Name="GROUP_PRODUCT" Type="Int32" />
+          <Property Name="MODULE_PRODUCT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NAME_PRODUCT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DESCRIPTION_PRODUCT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CONTENT_PRODUCT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IMAGE_PRODUCT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PRICE_PRODUCT" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SALES_PRODUCT" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="MONEY_SALE_PRODUCT" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PINED_PRODUCT" Type="Boolean" />
+          <Property Name="SALE_DAY_COUNT" Type="Int32" />
+          <Property Name="SALE_MONTH_COUNT" Type="Int32" />
+          <Property Name="SALE_DAY_UPDATED" Type="DateTime" Precision="3" />
+          <Property Name="SALE_MONTH_UPDATED" Type="DateTime" Precision="3" />
+          <Property Name="RATE_POINT" Type="Int32" />
+          <Property Name="RATE_COUNT" Type="Int32" />
+          <Property Name="DATE_CREATED" Type="DateTime" Precision="3" />
+          <Property Name="DATE_UPDATED" Type="DateTime" Precision="3" />
+          <Property Name="ENABLE_PRODUCT" Type="Boolean" />
+          <Property Name="META_TITLE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="META_KEYWORDS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="META_DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RULE_PERMISSIONS">
+          <Key>
+            <PropertyRef Name="KEY_PERMISSTION" />
+            <PropertyRef Name="KEY_RULE" />
+          </Key>
+          <Property Name="KEY_PERMISSTION" Type="Int32" Nullable="false" />
+          <Property Name="KEY_RULE" Type="Guid" Nullable="false" />
+          <Property Name="ENABLE_VIEW" Type="Boolean" />
+          <Property Name="ENABLE_ADD" Type="Boolean" />
+          <Property Name="ENABLE_MODIFY" Type="Boolean" />
+          <Property Name="ENABLE_DELETE" Type="Boolean" />
+          <Property Name="ENABLE_EXECUTE" Type="Boolean" />
+          <Property Name="AVALABLE_ACTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="RULE">
+          <Key>
+            <PropertyRef Name="KEY_RULE" />
+          </Key>
+          <Property Name="KEY_RULE" Type="Guid" Nullable="false" />
+          <Property Name="NAME_RULE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ENABLE_RULE" Type="Boolean" />
+          <Property Name="DATE_CREATED" Type="DateTime" Precision="3" />
+          <Property Name="SORT_INDEX" Type="Int32" />
+        </EntityType>
+        <EntityType Name="USER_RULES">
+          <Key>
+            <PropertyRef Name="KEY_USER" />
+            <PropertyRef Name="KEY_RULE" />
+          </Key>
+          <Property Name="KEY_USER" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="KEY_RULE" Type="Guid" Nullable="false" />
+          <Property Name="ENABLE" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="UserAddress">
+          <Key>
+            <PropertyRef Name="IdUser" />
+            <PropertyRef Name="KeyAddress" />
+          </Key>
+          <Property Name="IdUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="KeyAddress" Type="Guid" Nullable="false" />
+          <Property Name="NameAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DetailAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="PhoneAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsDefault" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EnableUser" Type="Boolean" />
+          <Property Name="LockAccessFailed" Type="Boolean" />
+          <Property Name="Online" Type="Boolean" />
+          <Property Name="IsAdmin" Type="Boolean" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CoffeeShopModelStoreContainer" CdmEntityContainer="CoffeeShopEntities">
+          <EntitySetMapping Name="ARTICLES">
+            <EntityTypeMapping TypeName="CoffeeShopModel.ARTICLE">
+              <MappingFragment StoreEntitySet="ARTICLES">
+                <ScalarProperty Name="META_DESCRIPTION" ColumnName="META_DESCRIPTION" />
+                <ScalarProperty Name="META_KEYWORDS" ColumnName="META_KEYWORDS" />
+                <ScalarProperty Name="META_TITLE" ColumnName="META_TITLE" />
+                <ScalarProperty Name="MODULE_ARTICLE" ColumnName="MODULE_ARTICLE" />
+                <ScalarProperty Name="KEY_GROUP_ARTICLE" ColumnName="KEY_GROUP_ARTICLE" />
+                <ScalarProperty Name="DATE_UPDATE_ARTICLE" ColumnName="DATE_UPDATE_ARTICLE" />
+                <ScalarProperty Name="DATE_CREATED_ARTICLE" ColumnName="DATE_CREATED_ARTICLE" />
+                <ScalarProperty Name="ORDER_INDEX" ColumnName="ORDER_INDEX" />
+                <ScalarProperty Name="IS_HIGHLIGHT_ARTICLE" ColumnName="IS_HIGHLIGHT_ARTICLE" />
+                <ScalarProperty Name="IS_SHOW_ARTICLE" ColumnName="IS_SHOW_ARTICLE" />
+                <ScalarProperty Name="IMAGE_ARTICLE" ColumnName="IMAGE_ARTICLE" />
+                <ScalarProperty Name="TAG_ARTICLE" ColumnName="TAG_ARTICLE" />
+                <ScalarProperty Name="CONTENT_ARTICLE" ColumnName="CONTENT_ARTICLE" />
+                <ScalarProperty Name="DESCRIPTION_ARTICLE" ColumnName="DESCRIPTION_ARTICLE" />
+                <ScalarProperty Name="NAME_ARTICLE" ColumnName="NAME_ARTICLE" />
+                <ScalarProperty Name="KEY_ARTICLE" ColumnName="KEY_ARTICLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CARTS">
+            <EntityTypeMapping TypeName="CoffeeShopModel.CART">
+              <MappingFragment StoreEntitySet="CARTS">
+                <ScalarProperty Name="CODE_PROMOTION" ColumnName="CODE_PROMOTION" />
+                <ScalarProperty Name="KEY_USER" ColumnName="KEY_USER" />
+                <ScalarProperty Name="STATUS_CART" ColumnName="STATUS_CART" />
+                <ScalarProperty Name="CONTENT_CART" ColumnName="CONTENT_CART" />
+                <ScalarProperty Name="PHONE_CART" ColumnName="PHONE_CART" />
+                <ScalarProperty Name="ADDRESS_CART" ColumnName="ADDRESS_CART" />
+                <ScalarProperty Name="NAME_CART" ColumnName="NAME_CART" />
+                <ScalarProperty Name="KEY_CART" ColumnName="KEY_CART" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONTACTS">
+            <EntityTypeMapping TypeName="CoffeeShopModel.CONTACT">
+              <MappingFragment StoreEntitySet="CONTACTS">
+                <ScalarProperty Name="STATUS_CONTACT" ColumnName="STATUS_CONTACT" />
+                <ScalarProperty Name="DATE_CREATED" ColumnName="DATE_CREATED" />
+                <ScalarProperty Name="CONTENT_CONTACT" ColumnName="CONTENT_CONTACT" />
+                <ScalarProperty Name="PHONE_CONTACT" ColumnName="PHONE_CONTACT" />
+                <ScalarProperty Name="EMAIL_CONTACT" ColumnName="EMAIL_CONTACT" />
+                <ScalarProperty Name="TITLE_CONTACT" ColumnName="TITLE_CONTACT" />
+                <ScalarProperty Name="NAME_CONTACT" ColumnName="NAME_CONTACT" />
+                <ScalarProperty Name="GROUP_CONTACT" ColumnName="GROUP_CONTACT" />
+                <ScalarProperty Name="MODULE_CONTACT" ColumnName="MODULE_CONTACT" />
+                <ScalarProperty Name="KEY_CONTACT" ColumnName="KEY_CONTACT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DETAILS_CART">
+            <EntityTypeMapping TypeName="CoffeeShopModel.DETAILS_CART">
+              <MappingFragment StoreEntitySet="DETAILS_CART">
+                <ScalarProperty Name="SORT_INDEX" ColumnName="SORT_INDEX" />
+                <ScalarProperty Name="NOTE_DETAIL" ColumnName="NOTE_DETAIL" />
+                <ScalarProperty Name="QUANTITY_PRODUCT" ColumnName="QUANTITY_PRODUCT" />
+                <ScalarProperty Name="PRICE_PRODUCT" ColumnName="PRICE_PRODUCT" />
+                <ScalarProperty Name="KEY_PRODUCT" ColumnName="KEY_PRODUCT" />
+                <ScalarProperty Name="KEY_DETAIL" ColumnName="KEY_DETAIL" />
+                <ScalarProperty Name="KEY_CART" ColumnName="KEY_CART" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GROUPS">
+            <EntityTypeMapping TypeName="CoffeeShopModel.GROUP">
+              <MappingFragment StoreEntitySet="GROUPS">
+                <ScalarProperty Name="MODULE" ColumnName="MODULE" />
+                <ScalarProperty Name="SORT_INDEX" ColumnName="SORT_INDEX" />
+                <ScalarProperty Name="ENABLE_GROUP" ColumnName="ENABLE_GROUP" />
+                <ScalarProperty Name="DESCRIPTION_GROUP" ColumnName="DESCRIPTION_GROUP" />
+                <ScalarProperty Name="NAME_GROUP" ColumnName="NAME_GROUP" />
+                <ScalarProperty Name="KEY_GROUP" ColumnName="KEY_GROUP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GROUPS_PERMISSITON">
+            <EntityTypeMapping TypeName="CoffeeShopModel.GROUPS_PERMISSITON">
+              <MappingFragment StoreEntitySet="GROUPS_PERMISSITON">
+                <ScalarProperty Name="SORT_INDEX" ColumnName="SORT_INDEX" />
+                <ScalarProperty Name="NAME_GROUP" ColumnName="NAME_GROUP" />
+                <ScalarProperty Name="KEY_GROUP" ColumnName="KEY_GROUP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IMAGES">
+            <EntityTypeMapping TypeName="CoffeeShopModel.IMAGE">
+              <MappingFragment StoreEntitySet="IMAGES">
+                <ScalarProperty Name="SOURCE_IMAGE" ColumnName="SOURCE_IMAGE" />
+                <ScalarProperty Name="DATE_CREATED" ColumnName="DATE_CREATED" />
+                <ScalarProperty Name="SORT_INDEX" ColumnName="SORT_INDEX" />
+                <ScalarProperty Name="VISIBLE_IMAGE" ColumnName="VISIBLE_IMAGE" />
+                <ScalarProperty Name="URL_IMAGE" ColumnName="URL_IMAGE" />
+                <ScalarProperty Name="DESCRIPTION_IMAGE" ColumnName="DESCRIPTION_IMAGE" />
+                <ScalarProperty Name="NAME_IMAGE" ColumnName="NAME_IMAGE" />
+                <ScalarProperty Name="RELATED_TYPE" ColumnName="RELATED_TYPE" />
+                <ScalarProperty Name="KEY_RELATED" ColumnName="KEY_RELATED" />
+                <ScalarProperty Name="MODULE" ColumnName="MODULE" />
+                <ScalarProperty Name="KEY_IMAGE" ColumnName="KEY_IMAGE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PERMISSIONS">
+            <EntityTypeMapping TypeName="CoffeeShopModel.PERMISSION">
+              <MappingFragment StoreEntitySet="PERMISSIONS">
+                <ScalarProperty Name="TYPE_MODULE" ColumnName="TYPE_MODULE" />
+                <ScalarProperty Name="KEY_GROUP" ColumnName="KEY_GROUP" />
+                <ScalarProperty Name="SORT_INDEX" ColumnName="SORT_INDEX" />
+                <ScalarProperty Name="ENABLE_PERMISSION" ColumnName="ENABLE_PERMISSION" />
+                <ScalarProperty Name="DESCRIPTION_PERMISSION" ColumnName="DESCRIPTION_PERMISSION" />
+                <ScalarProperty Name="NAME_PERMISSION" ColumnName="NAME_PERMISSION" />
+                <ScalarProperty Name="KEY_MODULE" ColumnName="KEY_MODULE" />
+                <ScalarProperty Name="KEY_PERMISSION" ColumnName="KEY_PERMISSION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTS">
+            <EntityTypeMapping TypeName="CoffeeShopModel.PRODUCT">
+              <MappingFragment StoreEntitySet="PRODUCTS">
+                <ScalarProperty Name="META_DESCRIPTION" ColumnName="META_DESCRIPTION" />
+                <ScalarProperty Name="META_KEYWORDS" ColumnName="META_KEYWORDS" />
+                <ScalarProperty Name="META_TITLE" ColumnName="META_TITLE" />
+                <ScalarProperty Name="ENABLE_PRODUCT" ColumnName="ENABLE_PRODUCT" />
+                <ScalarProperty Name="DATE_UPDATED" ColumnName="DATE_UPDATED" />
+                <ScalarProperty Name="DATE_CREATED" ColumnName="DATE_CREATED" />
+                <ScalarProperty Name="RATE_COUNT" ColumnName="RATE_COUNT" />
+                <ScalarProperty Name="RATE_POINT" ColumnName="RATE_POINT" />
+                <ScalarProperty Name="SALE_MONTH_UPDATED" ColumnName="SALE_MONTH_UPDATED" />
+                <ScalarProperty Name="SALE_DAY_UPDATED" ColumnName="SALE_DAY_UPDATED" />
+                <ScalarProperty Name="SALE_MONTH_COUNT" ColumnName="SALE_MONTH_COUNT" />
+                <ScalarProperty Name="SALE_DAY_COUNT" ColumnName="SALE_DAY_COUNT" />
+                <ScalarProperty Name="PINED_PRODUCT" ColumnName="PINED_PRODUCT" />
+                <ScalarProperty Name="MONEY_SALE_PRODUCT" ColumnName="MONEY_SALE_PRODUCT" />
+                <ScalarProperty Name="SALES_PRODUCT" ColumnName="SALES_PRODUCT" />
+                <ScalarProperty Name="PRICE_PRODUCT" ColumnName="PRICE_PRODUCT" />
+                <ScalarProperty Name="IMAGE_PRODUCT" ColumnName="IMAGE_PRODUCT" />
+                <ScalarProperty Name="CONTENT_PRODUCT" ColumnName="CONTENT_PRODUCT" />
+                <ScalarProperty Name="DESCRIPTION_PRODUCT" ColumnName="DESCRIPTION_PRODUCT" />
+                <ScalarProperty Name="NAME_PRODUCT" ColumnName="NAME_PRODUCT" />
+                <ScalarProperty Name="MODULE_PRODUCT" ColumnName="MODULE_PRODUCT" />
+                <ScalarProperty Name="GROUP_PRODUCT" ColumnName="GROUP_PRODUCT" />
+                <ScalarProperty Name="KEY_PRODUCT" ColumnName="KEY_PRODUCT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RULE_PERMISSIONS">
+            <EntityTypeMapping TypeName="CoffeeShopModel.RULE_PERMISSIONS">
+              <MappingFragment StoreEntitySet="RULE_PERMISSIONS">
+                <ScalarProperty Name="AVALABLE_ACTION" ColumnName="AVALABLE_ACTION" />
+                <ScalarProperty Name="ENABLE_EXECUTE" ColumnName="ENABLE_EXECUTE" />
+                <ScalarProperty Name="ENABLE_DELETE" ColumnName="ENABLE_DELETE" />
+                <ScalarProperty Name="ENABLE_MODIFY" ColumnName="ENABLE_MODIFY" />
+                <ScalarProperty Name="ENABLE_ADD" ColumnName="ENABLE_ADD" />
+                <ScalarProperty Name="ENABLE_VIEW" ColumnName="ENABLE_VIEW" />
+                <ScalarProperty Name="KEY_RULE" ColumnName="KEY_RULE" />
+                <ScalarProperty Name="KEY_PERMISSTION" ColumnName="KEY_PERMISSTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RULES">
+            <EntityTypeMapping TypeName="CoffeeShopModel.RULE">
+              <MappingFragment StoreEntitySet="RULES">
+                <ScalarProperty Name="SORT_INDEX" ColumnName="SORT_INDEX" />
+                <ScalarProperty Name="DATE_CREATED" ColumnName="DATE_CREATED" />
+                <ScalarProperty Name="ENABLE_RULE" ColumnName="ENABLE_RULE" />
+                <ScalarProperty Name="NAME_RULE" ColumnName="NAME_RULE" />
+                <ScalarProperty Name="KEY_RULE" ColumnName="KEY_RULE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USER_RULES">
+            <EntityTypeMapping TypeName="CoffeeShopModel.USER_RULES">
+              <MappingFragment StoreEntitySet="USER_RULES">
+                <ScalarProperty Name="ENABLE" ColumnName="ENABLE" />
+                <ScalarProperty Name="KEY_RULE" ColumnName="KEY_RULE" />
+                <ScalarProperty Name="KEY_USER" ColumnName="KEY_USER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserAddresses">
+            <EntityTypeMapping TypeName="CoffeeShopModel.UserAddress">
+              <MappingFragment StoreEntitySet="UserAddress">
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="PhoneAddress" ColumnName="PhoneAddress" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DetailAddress" ColumnName="DetailAddress" />
+                <ScalarProperty Name="NameAddress" ColumnName="NameAddress" />
+                <ScalarProperty Name="KeyAddress" ColumnName="KeyAddress" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="CoffeeShopModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="Online" ColumnName="Online" />
+                <ScalarProperty Name="LockAccessFailed" ColumnName="LockAccessFailed" />
+                <ScalarProperty Name="EnableUser" ColumnName="EnableUser" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

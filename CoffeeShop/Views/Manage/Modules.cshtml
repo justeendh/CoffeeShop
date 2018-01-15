@@ -1,0 +1,161 @@
+﻿
+@{
+    ViewBag.Title = "Danh sách module";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!-- Timeline Widget -->
+<div class="widget">
+    <div class="widget-extra themed-background-dark">
+        <h3 class="widget-content-light">
+            <strong>@ViewBag.Title</strong>
+        </h3>
+    </div>
+    <div class="widget-extra" style="height: auto !important;">        
+        <div>
+            <ul class="breadcrumb">
+                <li>Reishi Coffee & Milk tea</li>
+                <li><a href="/manage/modules">@ViewBag.Title</a></li>
+            </ul>
+        </div>
+        <div style="padding: 10px 0;">
+            <div class="form-group">
+                <a href="javascript:void(0);" class="btn btn-success btn-lg">
+                    <i class="fa fa-plus"></i> Thêm mới
+                </a>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered table-condensed text-center middle-verticle">
+                    <thead class="tbhead-color">
+                        <tr>
+                            <th class="text-left text-nowrap">
+                                Tên Module
+                            </th>
+                            <th class="text-center text-nowrap">
+                                Mã Module
+                            </th>
+                            <th class="text-center">
+                                Mô tả chức năng
+                            </th>
+                            <th class="text-center text-nowrap">
+                                Phân loại
+                            </th>
+                            <th class="text-center text-nowrap">
+                                Cho phép
+                            </th>
+                            
+                            <th class="text-center text-nowrap">
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th class="text-nowrap"><h4><strong>Tin tức</strong></h4></th>
+                            <td class="text-nowrap"><h4><strong>news</strong></h4></td>
+                            <td class="text-justify">
+                                <p style="margin-bottom: 0;">Theo bầu chọn của Zing.vn, làng giải trí Việt 2017 ghi nhận Mỹ Tâm, Sơn Tùng M-TP, Kaity Nguyễn, Hương Tràm... và cả hai gương mặt lớn tuổi là NSND Hoàng Dũng và NSND Lan Hương.</p>
+                            </td>
+                            <td class="text-nowrap"><strong>Quản trị nội dung</strong></td>
+                            <td class="text-nowrap"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                            <td class="text-nowrap">
+                                <a href="javascript:void(0);" class="btn btn-info">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                                <a href="javascript:void(0);" class="btn btn-danger">
+                                    <i class="gi gi-bin"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-nowrap"><h4><strong>Sản phẩm</strong></h4></th>
+                            <td class="text-nowrap"><h4><strong>products</strong></h4></td>
+                            <td class="text-justify">
+                                <p style="margin-bottom: 0;">Làng giải trí không chỉ có những tranh cãi và bê bối, đó còn là nơi những nghệ sĩ tài năng và giàu nghị lực vẫn miệt mài lao động để làm nên những sản phẩm âm nhạc, phim ảnh mới.</p>
+                            </td>
+                            <td class="text-nowrap"><strong>Chăm sóc khách hàng</strong></td>
+                            <td class="text-nowrap"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                            <td class="text-nowrap">
+                                <a href="javascript:void(0);" class="btn btn-info">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                                <a href="javascript:void(0);" class="btn btn-danger">
+                                    <i class="gi gi-bin"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-nowrap"><h4><strong>Tin tức</strong></h4></th>
+                            <td class="text-nowrap"><h4><strong>news</strong></h4></td>
+                            <td class="text-justify">
+                                <p style="margin-bottom: 0;">Một năm 2017 đang qua đi với nhiều dấu ấn, trào lưu trong làng giải trí và đọng lại là những cái tên với sản phẩm chuyên môn nổi bật, có sức ảnh hưởng rộng rãi.</p>
+                            </td>
+                            <td class="text-nowrap"><strong>Quản trị nội dung</strong></td>
+                            <td class="text-nowrap"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                            <td class="text-nowrap">
+                                <a href="javascript:void(0);" class="btn btn-info">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                                <a href="javascript:void(0);" class="btn btn-danger">
+                                    <i class="gi gi-bin"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-nowrap"><h4><strong>Sản phẩm</strong></h4></th>
+                            <td class="text-nowrap"><h4><strong>products</strong></h4></td>
+                            <td class="text-justify">
+                                <p style="margin-bottom: 0;">6 năm sau khi gia nhập làng giải trí, cái tên Mỹ Tâm không phải là nơi người hâm mộ trông mong sự đột phá.</p>
+                            </td>
+                            <td class="text-nowrap"><strong>Chăm sóc khách hàng</strong></td>
+                            <td class="text-nowrap"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                            <td class="text-nowrap">
+                                <a href="javascript:void(0);" class="btn btn-info">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                                <a href="javascript:void(0);" class="btn btn-danger">
+                                    <i class="gi gi-bin"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-nowrap"><h4><strong>Tin tức</strong></h4></th>
+                            <td class="text-nowrap"><h4><strong>news</strong></h4></td>
+                            <td class="text-justify">
+                                <p style="margin-bottom: 0;">Năm 2017, Mỹ Tâm tự đưa mình đến gần hơn với khán giả qua các sản phẩm chứ không bằng bất cứ bê bối đời tư nào.</p>
+                            </td>
+                            <td class="text-nowrap"><strong>Quản trị nội dung</strong></td>
+                            <td class="text-nowrap"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                            <td class="text-nowrap">
+                                <a href="javascript:void(0);" class="btn btn-info">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                                <a href="javascript:void(0);" class="btn btn-danger">
+                                    <i class="gi gi-bin"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-nowrap"><h4><strong>Sản phẩm</strong></h4></th>
+                            <td class="text-nowrap"><h4><strong>products</strong></h4></td>
+                            <td class="text-justify">
+                                <p style="margin-bottom: 0;">Đến tháng 7, Mỹ Tâm lại tung MV Đâu chỉ riêng em với phong cách độc đáo: quay one-shot (một cú máy) cận cảnh gương mặt cô khi hát, để khán  giả tập trung vào bài hát và ca từ xúc động.</p>
+                            </td>
+                            <td class="text-nowrap"><strong>Chăm sóc khách hàng</strong></td>
+                            <td class="text-nowrap"><label class="switch switch-success"><input type="checkbox" checked=""><span></span></label></td>
+                            <td class="text-nowrap">
+                                <a href="javascript:void(0);" class="btn btn-info">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                                <a href="javascript:void(0);" class="btn btn-danger">
+                                    <i class="gi gi-bin"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Timeline Widget -->

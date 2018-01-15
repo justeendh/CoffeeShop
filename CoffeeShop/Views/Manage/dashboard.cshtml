@@ -1,0 +1,269 @@
+﻿@using System.Xml;
+@using System.ServiceModel.Syndication;
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.Title = "Dashboard";
+    string url = "https://vnexpress.net/rss/kinh-doanh.rss";
+    XmlReader reader = XmlReader.Create(url);
+    SyndicationFeed feed = SyndicationFeed.Load(reader);
+    reader.Close();
+}
+
+
+<!-- Dashboard Header -->
+<!-- For an image header add the class 'content-header-media' and an image as in the following example -->
+<div class="content-header content-header-media">
+    <div class="header-section">
+        <div class="row">
+            <!-- Main Title (hidden on small devices for the statistics to fit) -->
+            <div class="col-md-4 col-lg-6 hidden-xs hidden-sm">
+                <h1>Chào <strong>Hoàng Hà Duy</strong><br><small>Reisi coffee & milk tea!</small></h1>
+            </div>
+            <!-- END Main Title -->
+
+            <!-- Top Stats -->
+            <div class="col-md-8 col-lg-6">
+                <div class="row text-center">
+                    <div class="col-xs-4 col-sm-3">
+                        <h2 class="animation-hatch">
+                            <strong class="text-nowrap">100,000,000</strong><br>
+                            <small class="text-nowrap">Doanh thu tháng</small>
+                        </h2>
+                    </div>
+                    <div class="col-xs-4 col-sm-3">
+                        <h2 class="animation-hatch">
+                            <strong id="likecount" class="text-nowrap">--</strong><br>
+                            <small class="text-nowrap">Lượt thích</small>
+                        </h2>
+                    </div>
+                    <div class="col-xs-4 col-sm-3">
+                        <h2 class="animation-hatch">
+                            <strong id="sharecount" class="text-nowrap">--</strong><br>
+                            <small class="text-nowrap">Lượt chia sẻ</small>
+                        </h2>
+                    </div>
+                    <script>
+                        function addCommas(nStr) {
+                            nStr += '';
+                            x = nStr.split('.');
+                            x1 = x[0];
+                            x2 = x.length > 1 ? '.' + x[1] : '';
+                            var rgx = /(\d+)(\d{3})/;
+                            while (rgx.test(x1)) {
+                                x1 = x1.replace(rgx, '$1' + ',' + '$2');
+                            }
+                            return x1 + x2;
+                        }
+
+                        function LoadLikeShare()
+                        {
+                            $.get('https://graph.facebook.com/'
+                                + '?fields=og_object{likes.summary(total_count).limit(0)},share&id='
+                                + 'http://didongthongminh.vn',
+                                function (data) {
+                                    if (data) {
+                                        var like_count = data.og_object.likes.summary.total_count;
+                                        var share_count = data.share.share_count;
+
+                                        $("#likecount").text(addCommas(like_count));
+                                        $("#sharecount").text(addCommas(share_count));
+                                    }
+                                });
+                        }
+
+                        LoadLikeShare();
+                        setInterval(function () {
+                            LoadLikeShare();
+                        }, 60000);
+                    </script>
+                </div>
+            </div>
+            <!-- END Top Stats -->
+        </div>
+    </div>
+    <!-- For best results use an image with a resolution of 2560x248 pixels (You can also use a blurred image with ratio 10:1 - eg: 1000x100 pixels - it will adjust and look great!) -->
+    <img src="/img/placeholders/headers/dashboard_header.jpg" alt="header image" class="animation-pulseSlow">
+</div>
+<!-- END Dashboard Header -->
+
+<!-- Mini Top Stats Row -->
+<div class="row">
+    <div class="col-sm-6 col-lg-3">
+        <!-- Widget -->
+        <a href="page_ready_article.html" class="widget widget-hover-effect1">
+            <div class="widget-simple">
+                <div class="widget-icon pull-left themed-background-autumn animation-fadeIn">
+                    <i class="fa fa-file-text"></i>
+                </div>
+                <h3 class="widget-content text-right animation-pullDown">
+                    <strong>+3 bài viết</strong><br>
+                    <small>được đăng hôm nay</small>
+                </h3>
+            </div>
+        </a>
+        <!-- END Widget -->
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <!-- Widget -->
+        <a href="page_comp_charts.html" class="widget widget-hover-effect1">
+            <div class="widget-simple">
+                <div class="widget-icon pull-left themed-background-spring animation-fadeIn">
+                    <i class="fa fa-money"></i>
+                </div>
+                <h3 class="widget-content text-right animation-pullDown">
+                    <strong>+250,000 VNĐ</strong><br>
+                    <small>Doanh thu hôm nay</small>
+                </h3>
+            </div>
+        </a>
+        <!-- END Widget -->
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <!-- Widget -->
+        <a href="page_comp_gallery.html" class="widget widget-hover-effect1">
+            <div class="widget-simple">
+                <div class="widget-icon pull-left themed-background-amethyst animation-fadeIn">
+                    <i class="fa fa-shopping-cart"></i>
+                </div>
+                <h3 class="widget-content text-right animation-pullDown">
+                    <strong>+30 đơn hàng</strong>
+                    <small>Đơn hàng chờ xử lý</small>
+                </h3>
+            </div>
+        </a>
+        <!-- END Widget -->
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <!-- Widget -->
+        <a href="page_ready_inbox.html" class="widget widget-hover-effect1">
+            <div class="widget-simple">
+                <div class="widget-icon pull-left themed-background-fire animation-fadeIn">
+                    <i class="gi gi-envelope"></i>
+                </div>
+                <h3 class="widget-content text-right animation-pullDown">
+                    <strong>+5 Liên hệ mới</strong>
+                    <small>Góp ý khách hàng</small>
+                </h3>
+            </div>
+        </a>
+        <!-- END Widget -->
+    </div>
+</div>
+<!-- END Mini Top Stats Row -->
+
+<!-- Widgets Row -->
+<div class="row">
+
+    <div class="col-md-6">
+        <!-- Timeline Widget -->
+        <div class="widget">
+            <div class="widget-extra themed-background-dark">
+                <h3 class="widget-content-light">
+                    <strong>Thời tiết Đà Nẵng</strong> (Nguồn: weatherwidget.io)
+                </h3>
+            </div>
+            <div class="widget-extra" style="height: auto !important;">
+
+                <div style="margin-bottom: 15px;">
+                    <a class="weatherwidget-io" href="https://forecast7.com/en/16d05108d20/da-nang/" data-label_1="ĐÀ NẴNG" data-label_2="WEATHER" data-font="Roboto" data-icons="Climacons Animated" data-theme="pure" >ĐÀ NẴNG WEATHER</a>
+                    <script>
+                    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://weatherwidget.io/js/widget.min.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","weatherwidget-io-js");
+                    </script>
+                </div>
+            </div>
+        </div>
+        <!-- END Timeline Widget -->
+
+        <!-- Timeline Widget -->
+        <div class="widget">
+            <div class="widget-extra themed-background-dark">
+                <h3 class="widget-content-light">
+                    <strong>Tỉ giá ngoại tệ</strong> (Nguồn: tygiado.com)
+                </h3>
+            </div>
+            <div class="widget-extra" style="height: auto !important;">
+                <div style="margin-top: 15px;">
+                    <iframe id="fr2" style="border: none;" src="//www.tygia.com/api.php?column=1&amp;title=0&amp;chart=0&amp;gold=0&amp;rate=1&amp;expand=1&amp;color=aa1111&amp;nganhang=VIETCOM&amp;fontsize=80&amp;ngay=" width="100%" height="400" __idm_frm__="2532"></iframe>
+                </div>
+            </div>
+        </div>
+        <!-- END Timeline Widget -->
+
+        <!-- Timeline Widget -->
+        <div class="widget">
+            <div class="widget-extra themed-background-dark">
+                <h3 class="widget-content-light">
+                    <strong>Đăng bài nhanh</strong>
+                </h3>
+            </div>
+            <div class="widget-extra" style="height: auto !important;">
+                <div style="margin-top: 15px;">
+                    <!-- Quick Post Content -->
+                    <form action="index2.html" method="post" class="form-bordered" onsubmit="return false;">
+                        <div class="form-group">
+                            <label for="qpost-title">Tiêu đề bài đăng</label>
+                            <input type="text" id="qpost-title" name="qpost-title" class="form-control" placeholder="Tiêu đề bài đăng..">
+                        </div>
+                        <div class="form-group">
+                            <label for="qpost-tags">Tags tìm kiếm</label>
+                            <input type="text" id="qpost-tags" name="qpost-tags" class="input-tags" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="qpost-description">Mô tả ngắn</label>
+                            <textarea id="qpost-description" name="qpost-description" rows="3" class="form-control" placeholder="Mô tả.." style="resize: vertical;"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="qpost-content">Nội dung bài đăng</label>
+                            <textarea id="qpost-content" name="qpost-content" rows="11" class="form-control ckeditor" placeholder="Nội dung.." style="resize: vertical;"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-lg btn-success"><i class="fa fa-check"></i> Đăng bài</button>
+                            <button type="reset" class="btn btn-lg btn-warning"><i class="fa fa-repeat"></i> Nhập lại</button>
+                        </div>
+                    </form>
+                    <!-- END Quick Post Content -->
+                </div>
+            </div>
+        </div>
+        <!-- END Timeline Widget -->
+    </div>
+    <div class="col-md-6">
+        <!-- Timeline Widget -->
+        <div class="widget">
+            <div class="widget-extra themed-background-dark">
+                <h3 class="widget-content-light">
+                    <strong>Tin tức kinh doanh</strong> (Nguồn: vnexpress.net)
+                </h3>
+            </div>
+            <div class="widget-extra">
+                <!-- Timeline Content -->
+                <div class="timeline">
+                    <ul class="timeline-list">
+                        @foreach (SyndicationItem item in feed.Items)
+                        {
+                            String subject = item.Title.Text;
+                            String summary = item.Summary.Text;
+                            String Link = item.Links[0].Uri.AbsoluteUri;
+                            String DateTime = item.PublishDate.ToString("dd-MM-yyyy HH:mm");
+
+                            <li class="active">
+                                <div class="timeline-icon"><i class="fa fa-newspaper-o"></i></div>
+                                <div class="timeline-time"><small>@DateTime</small></div>
+                                <div class="timeline-content">
+                                    <p class="push-bit"><a target="_blank" href="@Link"><strong>@subject</strong></a></p>
+                                    <p class="push-bit">@Html.Raw(summary)</p>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <!-- END Timeline Content -->
+            </div>
+        </div>
+        <!-- END Timeline Widget -->
+    </div>
+</div>
+<!-- END Widgets Row -->
+
+<script>
+</script>

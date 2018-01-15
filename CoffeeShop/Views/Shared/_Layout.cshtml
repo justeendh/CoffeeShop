@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Reishi coffee & milk tea</title>
+    <meta name="description" content="Reishi coffee & milk tea.">
+    <meta name="author" content="Reishi coffee & milk tea">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <!-- Stylesheets -->
+    <!-- Bootstrap is included in its original form, unaltered -->
+    <!-- Related styles of various icon packs and plugins -->
+    <link rel="stylesheet" href="/css/plugins.css">
+    <!-- END Stylesheets -->
+    <!-- jQuery, Bootstrap.js, jQuery plugins and Custom JS code -->
+    <script src="/js/vendor/jquery.min.js"></script>
+    <script src="/js/vendor/bootstrap.min.js"></script>
+    <script src="/js/plugins.js"></script>
+    @RenderSection("scriptSection", false)
+</head>
+<body>
+    <div class="navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="@Url.Action("Index", "Home", new { area = "" })" ><img src="~/img/reisi-logo.png" class="head-logo" /></a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Trang chủ", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Đặt hàng", "About", "Home")</li>
+                    <li>@Html.ActionLink("Khuyến mãi", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Tin tức", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Liên  hệ", "Contact", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    @RenderBody()
+    
+    <div class="footer-info-block">
+        <div class="container">
+            <h3>Get Connected</h3>
+            <div>
+                <a target="_blank" class="icon-fallback-text" href="https://www.facebook.com/blackriflecoffeeco" title="Black Rifle Coffee Company on Facebook">
+                    <i class="fa fa-facebook-square fa-3x"></i>
+                </a>
+                <a target="_blank" class="icon-fallback-text" href="https://www.instagram.com/blackriflecoffee/" title="Black Rifle Coffee Company on Instagram">
+                    <i class="fa fa-instagram fa-3x"></i>
+                </a>
+                <a target="_blank" class="text-danger" href="https://www.youtube.com/channel/UCnhTGM083kfLSNfRSmQjAzg" title="Black Rifle Coffee Company on Youtube">
+                    <i class="fa fa-youtube-square fa-3x"></i>
+                </a>
+                <a target="_blank" class="text-danger" href="https://www.pinterest.com/blkriflecoffee/" title="Black Rifle Coffee Company on Pinterest">
+                    <i class="fa fa-google-plus-square fa-3x"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+  <div class="footer-wrap bg-near-white">
+        <div class="container">
+            <div class="u-center mw-container ph20 ph0-l tc tl-ns cf">
+                <div class="pull-right">
+                    <div class="term-link-item">
+                        <a id="language-select" class="gray-text-link db pv10 pv5-ns pr15" href="#">Language</a>
+                    </div>
+                    <div class="term-link-item">
+                        <a class="gray-text-link db dib-rs pv10 pv5-ns pr15" href="/terms-of-use">Terms of Use</a>
+                    </div>
+                    <div class="term-link-item">
+                        <a class="gray-text-link db dib-ns pv10 pv5-ns pr15" href="/privacy">Privacy</a>
+                    </div>
+                </div>
+                <div class="f7 fl-ns gray pt5-ns">© 2017 <b>Reishi coffee</b> Inc., All Rights Reserved</div>
+            </div>
+        </div>
+    </div>
+    
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
